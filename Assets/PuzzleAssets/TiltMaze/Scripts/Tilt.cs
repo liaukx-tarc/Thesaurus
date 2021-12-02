@@ -31,7 +31,7 @@ public class Tilt : MonoBehaviour
     {
         // "rotate" the angles mathematically:
         curRot.x += Input.GetAxis("Vertical") * Time.deltaTime * tiltSpeed;
-        curRot.z += Input.GetAxis("Horizontal") * Time.deltaTime * tiltSpeed;
+        curRot.z -= Input.GetAxis("Horizontal") * Time.deltaTime * tiltSpeed;
         // Restrict rotation along x and z axes to the limit angles:
         curRot.x = Mathf.Clamp(curRot.x, minX, maxX);
         curRot.z = Mathf.Clamp(curRot.z, minZ, maxZ);
