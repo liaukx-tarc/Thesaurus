@@ -10,7 +10,7 @@ namespace UnityStandardAssets.SceneUtils
         public Sprite SlowSpeedTex;     // the ui texture for slow motion mode
         public float fullSpeed = 1;
         public float slowSpeed = 0.3f;
-        public Button button;           // reference to the ui texture that will be changed
+        public UnityEngine.UI.Button button;           // reference to the ui texture that will be changed
 
 
         private bool m_SlowMo;

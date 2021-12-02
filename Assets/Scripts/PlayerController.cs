@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float rotationX, rotationY, speed;
-    public Animator animator;
-    public Animator animator2;
+    float rotationX, rotationY;
+    public float speed;
+    public Animator armAnim;
+    static public bool isAttack;
     private Transform fpCamera;
-    public GameObject projectile;
+
+    private Vector3 mInput;
+    public CharacterController controller;
+
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2;
         rotationX = 0;
         rotationY = 0;
         fpCamera = this.gameObject.transform.GetChild(2).transform;
-
+        controller = GetComponent<CharacterController>();
+        isAttack = false;
     }
 
     // Update is called once per frame
@@ -24,39 +28,35 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            animator.SetBool("isWalking", true);
-            animator2.SetBool("isWalking", true);
+            armAnim.SetBool("isWalking", true);
         }
         else
         {
-            animator.SetBool("isWalking", false);
-            animator2.SetBool("isWalking", false);
+            armAnim.SetBool("isWalking", false);
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            animator.SetBool("isRunning", true);
-            animator2.SetBool("isRunning", true);
-            speed = 3;
+            armAnim.SetBool("isRunning", true);
+            speed = 6;
         }
         else
         {
-            animator.SetBool("isRunning", false);
-            animator2.SetBool("isRunning", false);
-            speed = 2;
+            armAnim.SetBool("isRunning", false);
+            speed = 4;
         }
-
-        if (Input.GetButtonDown("Fire1"))
+        if(isAttack)
         {
-            animator.SetTrigger("isAttack");
-            animator2.SetTrigger("isAttack");
-            Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 1.4f, transform.position.z), transform.rotation);
+            armAnim.SetTrigger("isAttack");
+            isAttack = false;
         }
         rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 200;
         rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 200;
-        transform.Translate(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime * speed);
-        transform.eulerAngles = new Vector3(0, rotationX, 0.0f);
+        mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+        transform.TransformDirection(mInput);
+        controller.SimpleMove(mInput *speed);
+        transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
         rotationY = Mathf.Clamp(rotationY, -30f, 30f);
-        fpCamera.eulerAngles = new Vector3(rotationY, rotationX, 0.0f);
+        fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
     }
     //private void LateUpdate()
     //{

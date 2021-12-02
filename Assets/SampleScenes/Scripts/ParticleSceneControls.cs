@@ -31,8 +31,8 @@ namespace UnityStandardAssets.SceneUtils
         public Text titleText;
         public Transform sceneCamera;
         public Text instructionText;
-        public Button previousButton;
-        public Button nextButton;
+        public UnityEngine.UI.Button previousButton;
+        public UnityEngine.UI.Button nextButton;
         public GraphicRaycaster graphicRaycaster;
         public EventSystem eventSystem;
 

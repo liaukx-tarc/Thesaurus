@@ -14,6 +14,5 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         this.transform.Translate(Vector3.forward *5* Time.fixedDeltaTime);
-      
     }
 }
