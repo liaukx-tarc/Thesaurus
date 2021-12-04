@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c640c218c6fee641adab4ffd0833d8b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - footPrefab: {fileID: 7572462823953942936, guid: c6bfbe45fd6dda54798e7b3b009d3585, type: 3}
+  - goalPrefab: {fileID: 3785318214608648055, guid: ab649b851bad2754eb4d024f2adf67a8, type: 3}
+  - numField: {fileID: 4123169946231732678, guid: f831bf42cc70be14f9f178447fb1b06c, type: 3}
+  - buttonPrefab: {fileID: 2607251852026560361, guid: 50d7dd4227f64774681925c75edddf37, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
