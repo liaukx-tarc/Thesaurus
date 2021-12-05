@@ -2628,7 +2628,6 @@ GameObject:
   - component: {fileID: 4645815780320742}
   - component: {fileID: 33992864603039022}
   - component: {fileID: 23607153095568886}
-  - component: {fileID: 114076105451378686}
   - component: {fileID: 65906923258056528}
   m_Layer: 0
   m_Name: Bld_Common_Door_A (1)
@@ -2701,24 +2700,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &114076105451378686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471680379605008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab9bdba8c7f4ec4c9a5e09a943ec171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsLocked: 1
-  DoorClosed: 1
-  OpenRotationAmount: 90
-  RotationSpeed: 1
-  MaxDistance: 3
-  playerTag: Player
 --- !u!65 &65906923258056528
 BoxCollider:
   m_ObjectHideFlags: 0
