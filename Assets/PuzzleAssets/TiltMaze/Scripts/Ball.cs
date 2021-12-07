@@ -5,16 +5,12 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public GameObject LevelClearobj;
-    // Start is called before the first frame update
+    public GameObject puzzleObj;
+    bool complete;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        complete = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -25,6 +21,15 @@ public class Ball : MonoBehaviour
             LevelClearobj.SetActive(true);
             StartCoroutine(AfterLevelClear());
             Debug.Log("Puzzle Complete!");
+
+            //Tell world controller the puzzle slove
+            if(!complete)
+            {
+                WorldController.puzzleSloved++;
+                puzzleObj.SetActive(false);
+                WorldController.puzzleComplete = true;
+                complete = true;
+            }
         }
     }
        
@@ -33,6 +38,4 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(3f);
         LevelClearobj.SetActive(false);
     }
-
-
 }

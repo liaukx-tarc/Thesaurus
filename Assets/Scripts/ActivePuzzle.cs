@@ -5,7 +5,7 @@ using UnityEngine;
 public class ActivePuzzle : MonoBehaviour
 {
     public GameObject puzzle;
-    public bool test1, test2;
+    public bool test1;
     public GameObject characterCamera;
 
     private void Update()
@@ -13,17 +13,11 @@ public class ActivePuzzle : MonoBehaviour
         if(test1)
         {
             PuzzleControl(true);
+            Debug.Log("Open");
             test1 = false;
         }
-
-        if (test2)
-        {
-            PuzzleControl(false);
-            test2 = false;
-        }
     }
-
-    void PuzzleControl(bool state)
+    public void PuzzleControl(bool state)
     {
         puzzle.SetActive(state);
 
