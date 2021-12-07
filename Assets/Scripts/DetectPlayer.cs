@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
+using UnityEngine.AI;
 
 public class DetectPlayer : MonoBehaviour
 {
-    static public bool isPlayerDetected;
-    static public bool isIdle;
-    static public bool isNear;
+    public bool isPlayerDetected;
+    public bool isIdle;
+    public bool isNear;
+    private EnemyController controller;
     private RaycastHit hit;
     private Vector3 direction;
+    private Transform target;
+    public Transform[] patrolPoint;
+    private NavMeshAgent agent;
+    public float delay;
     private float angle;
     private float chaseTimer;
+    private int index;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,60 +25,82 @@ public class DetectPlayer : MonoBehaviour
         isIdle = false;
         isNear = false;
         chaseTimer = 0;
+        index = 0;
+        agent = GetComponentInParent<NavMeshAgent>();
+        controller = GetComponentInParent<EnemyController>();
+        agent.destination = patrolPoint[index].position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (AstarPath.test)
-        //{
-        //    this.GetComponentInParent<CharacterController>().Move(transform.forward *Time.deltaTime);
-        //}
-
         Debug.DrawRay(transform.position + transform.up, transform.forward * 12.0f, Color.red);
-        if (chaseTimer > 0)
+        //Debug.Log(agent.remainingDistance);
+        if(!controller.isHit)
         {
-            chaseTimer -= Time.deltaTime;
-        }
-        else
-        {
-            if(isPlayerDetected)
+            if (chaseTimer > 0)
             {
-                MissTarget();
+                chaseTimer -= Time.deltaTime;
+            }
+            else
+            {
+                if (isPlayerDetected)
+                {
+                    MissTarget();
+                }
+                else
+                {
+                    if (!agent.pathPending && agent.remainingDistance < 1.5f)
+                    {
+                        index++;
+                        index = index % patrolPoint.Length;
+                        agent.destination = patrolPoint[index].position;
+                        StartCoroutine(Idle());
+                    }
+                }
+            }
+            if(controller.stunFinish)
+            {
+                chaseTimer = 3;
+                ChaseTarget();
+                controller.stunFinish = false;
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        isNear = false;
-        if (other.tag == "Player")
+        if(!controller.isHit)
         {
-            direction = other.transform.position - transform.position;
-            Debug.Log(Vector3.Distance(transform.position, other.transform.position)); 
-            angle = Vector3.Angle(direction, transform.forward);
-            if(angle < 45f)
+            isNear = false;
+            if (other.tag == "Player")
             {
-                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, 12.0f))
+                target = other.transform;
+                direction = target.position - transform.position;
+                angle = Vector3.Angle(direction, transform.forward);
+                if (angle < 45f)
                 {
-                    if (hit.collider.gameObject.tag == "Player")
+                    if (Physics.Raycast(transform.position + transform.up, direction, out hit, 15.0f))
                     {
-                        chaseTimer = 3;
-                        if (Vector3.Distance(transform.position, other.transform.position) < 1.5)
+                        if (hit.collider.gameObject.tag == "Player")
                         {
-                            isNear = true;
-                        }
-                        else
-                        {
-                            ChaseTarget();
+                            chaseTimer = 3;
+                            if (Vector3.Distance(transform.position, target.position) < 2f)
+                            {
+                                isNear = true;
+                            }
+                            else
+                            {
+                                ChaseTarget();
+                            }
                         }
                     }
                 }
-            }
-            else if (Vector3.Distance(transform.position, other.transform.position) < 4)
-            {
-                chaseTimer = 3;
-                ChaseTarget();
+                else if (Vector3.Distance(transform.position, target.position) < 5f)
+                {
+                    chaseTimer = 3;
+                    ChaseTarget();
+                }
             }
         }
     }
@@ -81,15 +109,22 @@ public class DetectPlayer : MonoBehaviour
     {
         isPlayerDetected = true;
         isIdle = false;
-        this.GetComponentInParent<Patrol>().enabled = false;
-        this.GetComponentInParent<AIDestinationSetter>().enabled = true;
+        if(target != null)
+        {
+            agent.destination = target.position;
+        }
+        else
+        {
+            agent.destination = PlayerController.position;
+        }
     }
 
     void MissTarget()
     {
         isPlayerDetected = false;
-        this.GetComponentInParent<AIDestinationSetter>().enabled = false;
-        if(!isIdle)
+        agent.destination = this.transform.position;
+        target = null;
+        if (!isIdle)
         {
             StartCoroutine(Idle());
         }
@@ -100,9 +135,9 @@ public class DetectPlayer : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         if (!isPlayerDetected)
         {
-            this.GetComponentInParent<Patrol>().enabled = true;
+            agent.destination = patrolPoint[index].position;
             isIdle = false;
         }
-     
     }
+
 }
