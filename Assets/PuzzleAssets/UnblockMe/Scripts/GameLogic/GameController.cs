@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-
 public class GameController : MonoBehaviour {
+    public bool complete;
+    public GameObject puzzleObj;
 
     public static Difficulty currDifficulty=Difficulty.Easy;
 
@@ -87,7 +88,8 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
-      
+        complete = false;
+
         BoxSize = boxSize;
         LeftTopPositon = LeftTopPos;
        
@@ -351,11 +353,20 @@ public class GameController : MonoBehaviour {
 
     public void LevelClear()
     {
-       
         print("LEVEL CLEAR");
         LevelClearobj.SetActive(true);
         HintArrow.transform.parent = this.transform;
         StartCoroutine(AfterLevelClear());
+
+        //Tell the world controller the puzzle sloved
+        if(!complete)
+        {
+            Debug.Log("Complete");
+            WorldController.puzzleSloved++;
+            puzzleObj.SetActive(false);
+            WorldController.puzzleComplete = true;
+            complete = true;
+        }
     }
 
     IEnumerator AfterLevelClear()

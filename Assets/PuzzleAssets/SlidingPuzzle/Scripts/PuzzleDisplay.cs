@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class PuzzleDisplay : MonoBehaviour 
 {
+	public GameObject puzzleObj;
+
 	// this puzzle texture.
 	public Texture PuzzleImage;
 
@@ -226,6 +228,15 @@ public class PuzzleDisplay : MonoBehaviour
 						Complete = false;
 					}
 				}
+			}
+
+			//Tell world controller the puzzle slove
+			if(Complete)
+            {
+				Debug.Log("Complete");
+				WorldController.puzzleSloved++;
+				puzzleObj.SetActive(false);
+				WorldController.puzzleComplete = true;
 			}
 
 			yield return null;
