@@ -6,7 +6,7 @@ public class WorldController : MonoBehaviour
 {
     public float cutSceneDuration;
     public GameObject characterCamera;
-    bool isEscapeMode;
+    static public bool isEscapeMode;
 
     //Explore Area
     static public int keyCollected;
@@ -23,6 +23,13 @@ public class WorldController : MonoBehaviour
     public GameObject[] puzzleAreaDoor;
     public GameObject puzzleAreaCamera;
 
+    //Mana Ball
+    static public int manaBallNum;
+    public int manaBallNeeded;
+    public GameObject manaBallCollection;
+    public GameObject cityBorder;
+    bool borderClose;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +39,13 @@ public class WorldController : MonoBehaviour
         exploreAreaClear = false;
         puzzleAreaClear = false;
         puzzleComplete = false;
+        borderClose = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isEscapeMode)
+        if (!isEscapeMode)
 
         {
             if (keyCollected == keyNum && !exploreAreaClear)
@@ -59,7 +67,13 @@ public class WorldController : MonoBehaviour
             }
         }
 
-        
+        else
+        {
+            if (manaBallNum >= manaBallNeeded && !borderClose)
+            {
+                StartCoroutine(BorderDisable());
+            }
+        }
     }
 
     void OpenDoor(GameObject[] door, GameObject camera)
@@ -78,6 +92,26 @@ public class WorldController : MonoBehaviour
     {
         yield return new WaitForSeconds(cutSceneDuration);
         camera.SetActive(false);
-        characterCamera.SetActive(true); 
+        characterCamera.SetActive(true);
+    }
+
+    public void IntiEscapePhase()
+    {
+        manaBallCollection.SetActive(true);
+        cityBorder.SetActive(true);
+        manaBallNum = 0;
+    }
+    IEnumerator BorderDisable()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        cityBorder.GetComponent<Renderer>().material.SetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a",
+            cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") - 0.005f);
+        
+        if (cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") <= 0)
+        {
+            borderClose = true;
+            cityBorder.SetActive(false);
+        }
     }
 }
