@@ -48,7 +48,10 @@ public class DoorControl : MonoBehaviour
 
             else
             {
-                targetAngle = transform.localRotation.eulerAngles.y - closeAngle;
+                if (transform.localRotation.eulerAngles.y > openAngle)
+                    targetAngle = transform.localRotation.eulerAngles.y - 360 - closeAngle;
+                else
+                    targetAngle = transform.localRotation.eulerAngles.y - closeAngle;
                 doorOpening = false;
             }
         }
