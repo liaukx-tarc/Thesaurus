@@ -148,7 +148,7 @@ public class GhostLeg : MonoBehaviour
         ansNum = targetNum;
         for (int j = row - 1; j >= 0; j--)
         {
-            bool changeCheck = false; ;
+            bool changeCheck = false;
             if (ansNum - 1 >= 0)
             {
                 if (footArr[j][ansNum - 1] == true)

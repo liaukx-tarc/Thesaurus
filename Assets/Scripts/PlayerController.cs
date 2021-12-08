@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(stamina);
         if(currentHp > 0)
         {
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
                 armAnim.SetBool("isWalking", true);
             }
@@ -84,24 +84,46 @@ public class PlayerController : MonoBehaviour
                 isRunning = false;
             }
 
-            if(Physics.Raycast(fpCamera.position, transform.forward, out hit, 3, layerMask))
+            if (Physics.Raycast(fpCamera.position, transform.forward, out hit, 4, layerMask))
             {
-                Debug.Log(fpCamera.position);
                 Debug.Log(hit.collider.gameObject.name);
-                if(hit.collider.gameObject.tag == "Door")
+                if (hit.collider.gameObject.tag == "Door")
                 {
+                    if (Input.GetButton("Interact"))
+                    {
+                        if (!hit.collider.gameObject.GetComponent<DoorControl>().isOpen)
+                        {
+                            hit.collider.gameObject.GetComponent<DoorControl>().doorOpening = true;
+                        }
+                        else
+                        {
+                            hit.collider.gameObject.GetComponent<DoorControl>().doorClosing = true;
+                        }
+                    }
 
                 }
                 else if (hit.collider.gameObject.tag == "Key")
                 {
-
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponent<KeyCollect>().Collect();
+                    }
                 }
-                else //puzzle
+                else if (hit.collider.gameObject.tag == "Puzzle")
                 {
-
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().PuzzleControl(true);
+                    }
                 }
-;            }
-
+                else if (hit.collider.gameObject.tag == "Book")
+                {
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
+                    }
+                }
+            }
             if (isAttack)
             {
                 armAnim.SetTrigger("isAttack");

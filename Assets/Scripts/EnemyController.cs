@@ -7,39 +7,68 @@ public class EnemyController : MonoBehaviour
 {
     private Animator anim;
     private float atkCD;
+    private float atkDelayTime;
     private NavMeshAgent agent;
-    public bool isHit;
+
     public bool isStun;
-    public bool stunFinish;
-    public float stunTimer;
+    public bool isStunStart;
+    public bool isStunFinish;
+    public float stunTime;
+
+    public bool isSlow;
+    public bool isSlowStart;
+    public float moveSpeed;
+
+    public int magicType;
+    public Color[] hitColor;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         atkCD = 0;
-        stunTimer = 0;
-        isHit = false;
+        stunTime = 0;
         isStun = false;
-        stunFinish = false;
+        isStunStart = false;
+        isStunFinish = false;
+        isSlow = false;
+        isSlowStart = false;
+        moveSpeed = 1.0f;
+        magicType = 0;
+        atkDelayTime = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isHit)
+        if(isStun)
         {
             anim.speed = 0;
             agent.speed = 0.0f;
             GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 1f);
-            if(!isStun)
+            GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("Color_20489dc9a40f4e2d9c702621e1fa832d", hitColor[magicType]);
+            
+            if (!isStunStart)
             {
                 StartCoroutine(Stun());
-                isStun = true;
+                isStunStart = true;
             }
         }
         else
         {
+            if (isSlow)
+            {
+                anim.speed = 0.5f;
+                moveSpeed = 0.5f;
+                if(!isSlowStart)
+                {
+                    StartCoroutine(Slow());
+                    isSlowStart = true;
+                }
+                GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 1f);
+                GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("Color_20489dc9a40f4e2d9c702621e1fa832d", hitColor[magicType]);
+            }
+
             if (atkCD > 0)
             {
                 atkCD -= Time.deltaTime;
@@ -68,13 +97,13 @@ public class EnemyController : MonoBehaviour
                     }
                     else
                     {
-                        agent.speed = 4.0f;
+                        agent.speed = 4.0f * moveSpeed;
                         anim.SetBool("isRunning", true);
                     }
                 }
                 else
                 {
-                    agent.speed = 1.5f;
+                    agent.speed = 1.5f * moveSpeed;
                     anim.SetBool("isRunning", false);
                     anim.SetBool("isWalking", true);
                 }
@@ -84,17 +113,45 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Stun()
     {
-        yield return new WaitForSeconds(2.0f);
+        if(magicType == 0)
+        {
+            stunTime = 1.5f;
+        }
+        else if (magicType == 1)
+        {
+            stunTime = 3.0f;
+        }
+        yield return new WaitForSeconds(stunTime);
         anim.speed = 1;
         GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 0);
-        isHit = false;
         isStun = false;
-        stunFinish = true;
+        isStunStart = false;
+        isStunFinish = true;
+    }
+    IEnumerator Slow()
+    {
+        yield return new WaitForSeconds(4.0f);
+        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 0);
+        isSlow = false;
+        isSlowStart = false;
+        anim.speed = 1.0f;
+        moveSpeed = 1.0f;
     }
     IEnumerator AtkDelay()
     {
-        yield return new WaitForSeconds(0.5f);
-        PlayerController.currentHp--;
-        PlayerController.regenTimer = 5.0f;
+        if(isSlow)
+        {
+            atkDelayTime = 1.0f;
+        }
+        else
+        {
+            atkDelayTime = 0.5f;
+        }
+        yield return new WaitForSeconds(atkDelayTime);
+        if(!isStun && GetComponentInChildren<DetectPlayer>().isNear)
+        {
+            PlayerController.currentHp--;
+            PlayerController.regenTimer = 5.0f;
+        }
     }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6223939033004862164}
   - component: {fileID: 1316374421305379202}
   - component: {fileID: 3980692565434765572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book_texturing_v2_book
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,9 +92,9 @@ GameObject:
   - component: {fileID: 3933283059839424829}
   - component: {fileID: 1913611083045157775}
   - component: {fileID: 250126393273976361}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book_texturing_v2_pages
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,9 +172,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5701821528698815094}
   - component: {fileID: 5236077805603575030}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpellBook
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
