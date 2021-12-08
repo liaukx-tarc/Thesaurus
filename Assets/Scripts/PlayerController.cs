@@ -91,13 +91,13 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetButton("Interact"))
                     {
-                        if (!hit.collider.gameObject.GetComponent<DoorControl>().isOpen)
+                        if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
                         {
-                            hit.collider.gameObject.GetComponent<DoorControl>().doorOpening = true;
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorOpening = true;
                         }
                         else
                         {
-                            hit.collider.gameObject.GetComponent<DoorControl>().doorClosing = true;
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorClosing = true;
                         }
                     }
 
