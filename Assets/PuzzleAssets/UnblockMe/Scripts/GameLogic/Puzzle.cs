@@ -16,9 +16,9 @@ public class Puzzle
             // Obstacle blocks:
                new Block(BlockOrientation.Orientation.Vertical, 0, 2, 3),
                 new Block(BlockOrientation.Orientation.Vertical, 0, 3, 3),
-                 new Block(BlockOrientation.Orientation.Vertical, 1, 4, 2),
+                 new Block(BlockOrientation.Orientation.Vertical, 1,4, 2),
                   new Block(BlockOrientation.Orientation.Vertical, 3, 4, 2),
-                   new Block(BlockOrientation.Orientation.Vertical, 3, 1, 2),
+                   new Block(BlockOrientation.Orientation.Vertical, 3,1, 2),
                     new Block(BlockOrientation.Orientation.Horizontal, 0, 4, 2),
                      new Block(BlockOrientation.Orientation.Horizontal, 4, 2, 2)
                      

@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(fpCamera.position, transform.forward, out hit, 4, layerMask))
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.tag == "Door")
                 {
                     if (Input.GetButton("Interact"))
