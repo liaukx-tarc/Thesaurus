@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GhoulMaterial
-  m_Shader: {fileID: 4800000, guid: a2991a03359ecf049a1a006c200406cc, type: 3}
-  m_ShaderKeywords: _EMISSIONSWITCH_ON _SMOOTHFROMMAPSWITCH_ON
-  m_LightmapFlags: 0
+  m_Shader: {fileID: -6465566751694194690, guid: b24bb8707b4c07c499627df5fa765b18, type: 3}
+  m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -19,8 +19,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_5436dc86493e46fda2de162e81b09394:
+        m_Texture: {fileID: 2800000, guid: 7307144979bf7df459af1937d7a73ace, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_69e255d0439b41a3bc54ed6f465d36f4:
+        m_Texture: {fileID: 2800000, guid: d5f1f1cb4a703a044a11cf51d65faa5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_afdda3fb4d744a7d988d7be836877024:
+        m_Texture: {fileID: 2800000, guid: d5f1f1cb4a703a044a11cf51d65faa5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 7307144979bf7df459af1937d7a73ace, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -83,17 +99,43 @@ Material:
         m_Texture: {fileID: 2800000, guid: 047a953b8df09e64b97dd542316e9c9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_99f8cb1f2bf54b9da464dd503d6a452e: 0
+    - Boolean_aa93569ebe914ed69981b94deb8921f5: 0
+    - Vector1_99b657cddeea437c997f08ebee7e2c31: 0
+    - _AlphaClip: 0
+    - _Blend: 0
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Cull: 2
     - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionMultiplayer: 4.23
     - _EmissionSwitch: 1
+    - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -104,20 +146,43 @@ Material:
     - _OcclusionStrength: 1
     - _ParalaxOffset: 0.001
     - _Parallax: 0.02
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _SampleGI: 0
     - _SmoothFromMapSwitch: 1
     - _SmoothRough: 0
-    - _SmoothnessTextureChannel: 0
+    - _Smoothness: 0.4
+    - _SmoothnessTextureChannel: 1
     - _Snoothness: 0.69
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Surface: 0
     - _Tiling: 1
     - _TilingX: 1
     - _TilingY: 1
     - _UVSec: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - Color_20489dc9a40f4e2d9c702621e1fa832d: {r: 0.7292703, g: 0.47931647, b: 0.9339623, a: 1}
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubemapColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &3581594226760753336
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

@@ -13,6 +13,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(Vector3.forward *5* Time.fixedDeltaTime);
+        this.transform.Translate(Vector3.forward *30* Time.fixedDeltaTime);
     }
 }

@@ -1,62 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    private CharacterController character;
     private Animator anim;
-    private float timer;
+    private float atkCD;
+    private NavMeshAgent agent;
+    public bool isHit;
+    public bool isStun;
+    public bool stunFinish;
+    public float stunTimer;
     // Start is called before the first frame update
     void Start()
     {
-        character = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        timer = 0;
+        agent = GetComponent<NavMeshAgent>();
+        atkCD = 0;
+        stunTimer = 0;
+        isHit = false;
+        isStun = false;
+        stunFinish = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
+        if(isHit)
         {
-            timer -= Time.deltaTime;
-        }  
-        if (DetectPlayer.isIdle)
-        {
-            GetComponent<AIPath>().maxSpeed = 0.0f;
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isWalking", false);
+            anim.speed = 0;
+            agent.speed = 0.0f;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 1f);
+            if(!isStun)
+            {
+                StartCoroutine(Stun());
+                isStun = true;
+            }
         }
         else
         {
-            if (DetectPlayer.isPlayerDetected)
+            if (atkCD > 0)
             {
-                if (DetectPlayer.isNear)
+                atkCD -= Time.deltaTime;
+            }
+            if (GetComponentInChildren<DetectPlayer>().isIdle)
+            {
+                agent.speed = 0.0f;
+                anim.SetBool("isRunning", false);
+                anim.SetBool("isWalking", false);
+            }
+            else
+            {
+                if (GetComponentInChildren<DetectPlayer>().isPlayerDetected)
                 {
-                    GetComponent<AIPath>().maxSpeed = 0.0f;
-                    anim.SetBool("isRunning", false);
-                    anim.SetBool("isWalking", false);
-                    if (timer <= 0)
+                    if (GetComponentInChildren<DetectPlayer>().isNear)
                     {
-                        anim.SetTrigger("isAttack");
-                        timer = 2;
+                        agent.speed = 0.0f;
+                        anim.SetBool("isRunning", false);
+                        anim.SetBool("isWalking", false);
+                        if (atkCD <= 0)
+                        {
+                            anim.SetTrigger("isAttack");
+                            atkCD = 2;
+                            StartCoroutine(AtkDelay());
+                        }
+                    }
+                    else
+                    {
+                        agent.speed = 4.0f;
+                        anim.SetBool("isRunning", true);
                     }
                 }
                 else
                 {
-                    GetComponent<AIPath>().maxSpeed = 2.0f;
-                    anim.SetBool("isRunning", true);
+                    agent.speed = 1.5f;
+                    anim.SetBool("isRunning", false);
+                    anim.SetBool("isWalking", true);
                 }
             }
-            else
-            {
-                GetComponent<AIPath>().maxSpeed = 1.0f;
-                anim.SetBool("isRunning", false);
-                anim.SetBool("isWalking", true);
-            }
         }
-        
+    }
+
+    IEnumerator Stun()
+    {
+        yield return new WaitForSeconds(2.0f);
+        anim.speed = 1;
+        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 0);
+        isHit = false;
+        isStun = false;
+        stunFinish = true;
+    }
+    IEnumerator AtkDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerController.currentHp--;
+        PlayerController.regenTimer = 5.0f;
     }
 }
