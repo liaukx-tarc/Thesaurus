@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class WorldController : MonoBehaviour
     public GameObject cityBorder;
     bool borderClose;
 
+    //dead scene
+    public GameObject deadScene;
+    private float deadAlpha;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,39 +45,52 @@ public class WorldController : MonoBehaviour
         puzzleAreaClear = false;
         puzzleComplete = false;
         borderClose = false;
+
+        deadAlpha = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isEscapeMode)
-
+        if(!PlayerController.isDead)
         {
-            if (keyCollected == keyNum && !exploreAreaClear)
+            if (!isEscapeMode)
+
             {
-                exploreAreaClear = true;
-                OpenDoor(exploreAreaDoor, exploreAreaCamera);
+                if (keyCollected == keyNum && !exploreAreaClear)
+                {
+                    exploreAreaClear = true;
+                    OpenDoor(exploreAreaDoor, exploreAreaCamera);
+                }
+
+                if (puzzleComplete)
+                {
+                    characterCamera.SetActive(true);
+                    puzzleComplete = false;
+
+                    if (puzzleSloved == puzzleNum && !puzzleAreaClear)
+                    {
+                        puzzleAreaClear = true;
+                        OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
+                    }
+                }
             }
 
-            if (puzzleComplete)
+            else
             {
-                characterCamera.SetActive(true);
-                puzzleComplete = false;
-
-                if (puzzleSloved == puzzleNum && !puzzleAreaClear)
+                if (manaBallNum >= manaBallNeeded && !borderClose)
                 {
-                    puzzleAreaClear = true;
-                    OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
+                    StartCoroutine(BorderDisable());
                 }
             }
         }
-
-        else
+       else
         {
-            if (manaBallNum >= manaBallNeeded && !borderClose)
+            if(deadAlpha < 1)
             {
-                StartCoroutine(BorderDisable());
+                deadAlpha += Time.deltaTime * 0.5f;
             }
+            deadScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, deadAlpha);
         }
     }
 

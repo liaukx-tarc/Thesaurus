@@ -9,14 +9,24 @@ public class PlayerController : MonoBehaviour
     public Animator armAnim;
     static public bool isAttack;
     private Transform fpCamera;
+    public Transform handCamera;
+    private float handAngle;
     static public Vector3 position;
+    static public bool isDead;
+    public float deathAngle;
+    public float stamina;
+    public bool isRunning;
+    public bool reachMinStamina;
 
     private Vector3 mInput;
     public CharacterController controller;
 
+    public RaycastHit hit;
+
     static public int currentHp;
     public int maxHp;
     static public float regenTimer;
+    private int layerMask = 1 << 9;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +39,19 @@ public class PlayerController : MonoBehaviour
         fpCamera = this.gameObject.transform.GetChild(2).transform;
         controller = GetComponent<CharacterController>();
         isAttack = false;
+        isDead = false;
+        deathAngle = 0;
         position = this.transform.position;
+        handAngle = handCamera.eulerAngles.x;
+        stamina = 5;
+        isRunning = false;
+        reachMinStamina = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(currentHp);
+        //Debug.Log(stamina);
         if(currentHp > 0)
         {
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
@@ -46,20 +62,67 @@ public class PlayerController : MonoBehaviour
             {
                 armAnim.SetBool("isWalking", false);
             }
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetButton("Run"))
             {
-                armAnim.SetBool("isRunning", true);
-                speed = 6;
+                if (stamina > 0 && reachMinStamina)
+                {
+                    armAnim.SetBool("isRunning", true);
+                    speed = 8;
+                    isRunning = true;
+                }
+                else
+                {
+                    armAnim.SetBool("isRunning", false);
+                    speed = 5;
+                    isRunning = false;
+                }
             }
             else
             {
                 armAnim.SetBool("isRunning", false);
-                speed = 4;
+                speed = 5;
+                isRunning = false;
             }
+
+            if(Physics.Raycast(fpCamera.position, transform.forward, out hit, 3, layerMask))
+            {
+                Debug.Log(fpCamera.position);
+                Debug.Log(hit.collider.gameObject.name);
+                if(hit.collider.gameObject.tag == "Door")
+                {
+
+                }
+                else if (hit.collider.gameObject.tag == "Key")
+                {
+
+                }
+                else //puzzle
+                {
+
+                }
+;            }
+
             if (isAttack)
             {
                 armAnim.SetTrigger("isAttack");
                 isAttack = false;
+            }
+            if(isRunning)
+            {
+                stamina -= Time.deltaTime *1.5f;
+            }
+            else if(stamina < 5 && !isRunning)
+            {
+                stamina += Time.deltaTime;
+            }
+            if(stamina <= 0)
+            {
+                reachMinStamina = false;
+            }
+            if(!reachMinStamina)
+            {
+                if (stamina > 2)
+                    reachMinStamina = true;
             }
             rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 200;
             rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 200;
@@ -85,6 +148,18 @@ public class PlayerController : MonoBehaviour
        else
         {
             Debug.Log("dead");
+            isDead = true;
+            if(deathAngle < 90)
+            {
+                deathAngle += 1;
+            }
+            if(handAngle > 0)
+            {
+                handAngle -= 1;
+            }
+            transform.eulerAngles = new Vector3(deathAngle, rotationX, 0.0f);
+            fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
+            handCamera.eulerAngles = new Vector3(handAngle, handCamera.eulerAngles.y, handCamera.eulerAngles.z);
         }
         position = this.transform.position;
     }

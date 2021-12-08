@@ -73,6 +73,7 @@ public class DetectPlayer : MonoBehaviour
         if(!controller.isHit)
         {
             isNear = false;
+            Debug.Log(Vector3.Distance(transform.position, PlayerController.position));
             if (other.tag == "Player")
             {
                 target = other.transform;
@@ -85,7 +86,7 @@ public class DetectPlayer : MonoBehaviour
                         if (hit.collider.gameObject.tag == "Player")
                         {
                             chaseTimer = 3;
-                            if (Vector3.Distance(transform.position, target.position) < 2f)
+                            if (Vector3.Distance(transform.position, target.position) < 2.5f)
                             {
                                 isNear = true;
                             }
@@ -96,7 +97,7 @@ public class DetectPlayer : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(transform.position, target.position) < 5f)
+                else if (Vector3.Distance(transform.position, target.position) < 6f)
                 {
                     chaseTimer = 3;
                     ChaseTarget();

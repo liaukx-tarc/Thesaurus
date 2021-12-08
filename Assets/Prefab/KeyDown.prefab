@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2324014087925149414}
   - component: {fileID: 550698327714880044}
   - component: {fileID: -4498760068279557848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KeyDown
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,4 +94,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c25fc773acb4e43bb497f798315146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0

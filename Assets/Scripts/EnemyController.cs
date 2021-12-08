@@ -63,8 +63,7 @@ public class EnemyController : MonoBehaviour
                         {
                             anim.SetTrigger("isAttack");
                             atkCD = 2;
-                            PlayerController.currentHp--;
-                            PlayerController.regenTimer = 5.0f;
+                            StartCoroutine(AtkDelay());
                         }
                     }
                     else
@@ -91,5 +90,11 @@ public class EnemyController : MonoBehaviour
         isHit = false;
         isStun = false;
         stunFinish = true;
+    }
+    IEnumerator AtkDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerController.currentHp--;
+        PlayerController.regenTimer = 5.0f;
     }
 }

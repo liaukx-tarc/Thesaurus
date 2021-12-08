@@ -10,7 +10,7 @@ public class RandomItem : MonoBehaviour
 
     public void SpawnItem()
     {
-        int pointNum = Random.RandomRange(0, spawnPoint.Length - 1);
+        int pointNum = Random.Range(0, spawnPoint.Length - 1);
 
         Instantiate(spawnItem[itemNum], spawnPoint[pointNum].transform);
         itemNum++;
