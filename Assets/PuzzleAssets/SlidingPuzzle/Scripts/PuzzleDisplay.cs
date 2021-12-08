@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
-
-public class PuzzleDisplay : MonoBehaviour 
+public class PuzzleDisplay : MonoBehaviour
 {
 	public GameObject puzzleObj;
 
-	// this puzzle texture.
-	public Texture PuzzleImage;
+	public GameObject Confetti;
+    // this puzzle texture.
+    public Texture PuzzleImage;
 
-	// the width and height of the puzzle in tiles.
-	public int Height = 3;
+    //timer script 
+    TimerScript timer;
+
+    public int Height = 3;
 	public int Width  = 3;
 
 	// additional scaling value.
@@ -39,7 +42,7 @@ public class PuzzleDisplay : MonoBehaviour
 
 	// has the puzzle been completed?
 	public bool Complete = false;
-    public GameObject LevelClearobj;
+    public RawImage LevelClearobj;
 
     // Use this for initialization
     void Start () 
@@ -184,24 +187,21 @@ public class PuzzleDisplay : MonoBehaviour
 
 	private IEnumerator JugglePuzzle()
 	{
-		yield return new WaitForSeconds(1.0f);
-
 		// hide a puzzle tile (one is always missing to allow the puzzle movement).
 		TileDisplayArray[0,0].GetComponent<PuzzleTile>().Active = false;
-
-		yield return new WaitForSeconds(1.0f);
 
 		for(int k = 0; k < 20; k++)
 		{
 			// use random to position each puzzle section in the array delete the number once the space is filled.
-			for(int j = 0; j < Height; j++)
-			{
+	
 				for(int i = 0; i < Width; i++)
-				{		
-					// attempt to execute a move for this tile.
-					TileDisplayArray[i,j].GetComponent<PuzzleTile>().ExecuteAdditionalMove();
+                {
+                for (int j = 0; j < Height; j++)
+                {
+                    // attempt to execute a move for this tile.
+                    TileDisplayArray[i,j].GetComponent<PuzzleTile>().ExecuteAdditionalMove();
 
-					yield return new WaitForSeconds(0.02f);
+					yield return new WaitForSeconds(0.0f);
 				}
 			}
 		}
@@ -230,25 +230,18 @@ public class PuzzleDisplay : MonoBehaviour
 				}
 			}
 
-			//Tell world controller the puzzle slove
-			if(Complete)
-            {
-				Debug.Log("Complete");
-				WorldController.puzzleSloved++;
-				puzzleObj.SetActive(false);
-				WorldController.puzzleComplete = true;
-			}
 
 			yield return null;
 		}
-				
+
 		// if we are still complete then all the tiles are correct.
-		if(Complete)
+		if (Complete)
 		{
-            print("LEVEL CLEAR"); 
-            LevelClearobj.SetActive(true);
-            StartCoroutine(AfterLevelClear());
-            Debug.Log("Puzzle Complete!");
+			LevelClearobj.gameObject.SetActive(true);
+			StartCoroutine(AfterLevelClear());
+			timer = FindObjectOfType<TimerScript>();
+			timer.StopTimer();
+			Confetti.SetActive(true);
 		}
 
 		yield return null;
@@ -256,9 +249,15 @@ public class PuzzleDisplay : MonoBehaviour
 
     IEnumerator AfterLevelClear()
     {
-        yield return new WaitForSeconds(3f);
-        LevelClearobj.SetActive(false);
-    }
+        yield return new WaitForSeconds(2f);
+        LevelClearobj.gameObject.SetActive(false);
+		
+		//Tell the world controller the puzzle sloved
+		Debug.Log("Complete");
+		WorldController.puzzleSloved++;
+		WorldController.puzzleComplete = true;
+		puzzleObj.SetActive(false);
+	}
 
         private Vector2 ConvertIndexToGrid(int index)
 	{
