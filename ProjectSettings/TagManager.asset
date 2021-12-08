@@ -11,6 +11,7 @@ TagManager:
   - Door
   - Key
   - Puzzle
+  - Book
   layers:
   - Default
   - TransparentFX

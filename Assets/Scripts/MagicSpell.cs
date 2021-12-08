@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class MagicSpell : MonoBehaviour
 {
-    public GameObject projectile;
-    public GameObject[] particle;
+    public GameObject[] projectile;
     private float atkTimer;
     public RaycastHit hit;
     public bool isAttackDelay;
     private float attackDelay;
     private float alpha;
     private int layerMask = 1 << 8;
+    private int proIndex;
+    private float r, g, b;
 
     public ParticleSystem[] psSpell;
-    public ParticleSystem[] psCircle;
+    public GameObject[] psCircle;
     private ParticleSystem.MainModule main;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class MagicSpell : MonoBehaviour
         isAttackDelay = false;
         attackDelay = 0.0f;
         alpha = 0.0f;
+        proIndex = 0;
+        r = 1; g = 1; b = 1;
     }
 
     // Update is called once per frame
@@ -31,6 +35,31 @@ public class MagicSpell : MonoBehaviour
     {
         if(!PlayerController.isDead)
         {
+            if(Input.GetButtonDown("Switch"))
+            {
+                proIndex = (proIndex + 1) % projectile.Length;
+                Debug.Log(proIndex);
+                if (proIndex == 0)
+                {
+                    r = 1; g = 1; b = 1;
+                }
+                else if (proIndex == 1)
+                {
+                    r = 0.38f; g = 0.83f; b = 0.87f; //97,212,221 blue
+                }
+                else
+                {
+                    r = 0.8f; g = 0.45f; b = 0.91f; //204,116,231 violet
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    main = psSpell[i].main;
+                    main.startColor = new Color(r, g, b, 1.0f);
+                }
+            }
+
+
+
             if (isAttackDelay)
             {
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 100, layerMask)
@@ -41,8 +70,17 @@ public class MagicSpell : MonoBehaviour
                 {
                     if (hit.collider.tag == "Enemy")
                     {
-                        Debug.Log(hit.collider.name);
-                        hit.collider.GetComponentInParent<EnemyController>().isHit = true;
+                        //Debug.Log(hit.collider.name);
+                        hit.collider.GetComponentInParent<EnemyController>().magicType = proIndex;
+                        if (proIndex == 2)
+                        {
+                            hit.collider.GetComponentInParent<EnemyController>().isSlow = true;
+                            Debug.Log("Shoot");
+                        }
+                        else
+                        {
+                            hit.collider.GetComponentInParent<EnemyController>().isStun = true;
+                        }
                     }
                 }
                 attackDelay -= Time.deltaTime;
@@ -55,7 +93,7 @@ public class MagicSpell : MonoBehaviour
             if (atkTimer <= 0.0f && Input.GetButtonDown("Fire1"))
             {
                 PlayerController.isAttack = true;
-                Instantiate(projectile, transform.position, transform.rotation);
+                Instantiate(projectile[proIndex], transform.position, transform.rotation);
                 isAttackDelay = true;
                 attackDelay = 0.1f;
                 atkTimer = 3.0f;
@@ -63,16 +101,13 @@ public class MagicSpell : MonoBehaviour
             else if (atkTimer > 0.0f)
             {
                 atkTimer -= Time.deltaTime;
-                main = psSpell[0].main;
-                main.startColor = new Color(39 / 255.0f, 102 / 255.0f, 214 / 255.0f, (atkTimer / -3) + 1.0f);
-                main = psCircle[0].main;
-                main.startColor = new Color(135 / 255.0f, 139 / 255.0f, 245 / 255.0f, (atkTimer / -3) + 1.0f);
-                psCircle[0].gameObject.GetComponent<ParticleSystemRenderer>().maxParticleSize = (((atkTimer / -3) + 1.0f) * 0.2f);
-                main = psSpell[1].main;
-                main.startColor = new Color(39 / 255.0f, 102 / 255.0f, 214 / 255.0f, (atkTimer / -3) + 1.0f);
-                main = psCircle[1].main;
-                //main.startColor = new Color(135 / 255.0f, 139 / 255.0f, 245 / 255.0f, (atkTimer / -3) + 1.0f);
-                psCircle[1].gameObject.GetComponent<ParticleSystemRenderer>().maxParticleSize = (((atkTimer / -3) + 1.0f) * 0.2f);
+                for(int i = 0; i < 2; i ++)
+                {
+                    main = psSpell[i].main;
+                    main.startColor = new Color(r, g, b, (atkTimer / -3) + 1.0f);
+                    psCircle[i].GetComponent<ParticleSystemRenderer>().maxParticleSize = (((atkTimer / -3) + 1.0f) * 0.2f);
+                }
+
             }
         }
       

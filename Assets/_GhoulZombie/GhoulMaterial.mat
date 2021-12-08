@@ -165,7 +165,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - Color_20489dc9a40f4e2d9c702621e1fa832d: {r: 0.7292703, g: 0.47931647, b: 0.9339623, a: 1}
+    - Color_20489dc9a40f4e2d9c702621e1fa832d: {r: 0.37992162, g: 0.83049995, b: 0.8679245, a: 1}
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

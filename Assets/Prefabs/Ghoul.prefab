@@ -70,6 +70,11 @@ MonoBehaviour:
   isStun: 0
   stunFinish: 0
   stunTimer: 0
+  magicType: 0
+  hitColor:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.37992162, g: 0.83049995, b: 0.8679245, a: 1}
+  - {r: 0.7991121, g: 0.45624778, b: 0.9056604, a: 1}
 --- !u!195 &1046541810
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -135,7 +140,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4214010696428774838
 MonoBehaviour:
@@ -153,6 +158,7 @@ MonoBehaviour:
   isIdle: 0
   isNear: 0
   patrolPoint:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

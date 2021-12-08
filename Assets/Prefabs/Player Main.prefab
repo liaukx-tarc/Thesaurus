@@ -952,7 +952,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5301531, g: 0.54666615, b: 0.9622642, a: 0.76862746}
+      maxColor: {r: 0.5301531, g: 0.54666615, b: 0.9622642, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1014,7 +1014,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1759,7 +1759,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1780,17 +1780,17 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.49576658
           value: 1
-          inSlope: -0.22925211
-          outSlope: -0.22925211
+          inSlope: 0.09540482
+          outSlope: 0.09540482
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.9958496
-          value: 0.67528915
-          inSlope: -0.64931387
-          outSlope: -0.64931387
+          time: 0.99972534
+          value: 1
+          inSlope: 0
+          outSlope: 0
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -5728,7 +5728,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.1932716, g: 0.39893872, b: 0.8396226, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10507,7 +10507,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -11252,7 +11252,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -11273,17 +11273,17 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.49576658
           value: 1
-          inSlope: 0.028404273
-          outSlope: 0.028404273
+          inSlope: 0.09540482
+          outSlope: 0.09540482
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0.9324322
-          inSlope: -0.13400109
-          outSlope: -0.13400109
+          time: 0.99972534
+          value: 1
+          inSlope: 0
+          outSlope: 0
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -15063,7 +15063,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15232,7 +15232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1377568892791028555}
-  - component: {fileID: 1377568892791028552}
+  - component: {fileID: 564790973}
   m_Layer: 3
   m_Name: CastPoint
   m_TagString: Untagged
@@ -15254,7 +15254,7 @@ Transform:
   m_Father: {fileID: 1377568892550189685}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1377568892791028552
+--- !u!114 &564790973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15266,8 +15266,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85e8a2b114015b47bdea62f7b050d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5976228122666595081, guid: bda4b4be168589947bb9a1b3915b346e, type: 3}
+  projectile:
+  - {fileID: 6154723138441814039, guid: 825ac688d982d214d9fd2da49694a210, type: 3}
+  - {fileID: 1920325297268671343, guid: 889dd67908ff48640a817f0b0074814e, type: 3}
+  - {fileID: 5976228122666595081, guid: bda4b4be168589947bb9a1b3915b346e, type: 3}
   isAttackDelay: 0
+  psSpell:
+  - {fileID: 1377568891264999897}
+  - {fileID: 1377568891585386113}
+  psCircle:
+  - {fileID: 1377568890746357078}
+  - {fileID: 1377568891872949427}
 --- !u!1 &1484736860731308322
 GameObject:
   m_ObjectHideFlags: 0
@@ -16485,7 +16494,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.2
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
@@ -16503,6 +16512,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   armAnim: {fileID: 339915632425810583}
+  handCamera: {fileID: 1377568892775937408}
+  deathAngle: 0
+  stamina: 0
+  isRunning: 0
+  reachMinStamina: 0
   controller: {fileID: 0}
   maxHp: 0
 --- !u!1 &6441538331325651480
@@ -17253,7 +17267,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.1932716, g: 0.39893872, b: 0.8396226, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

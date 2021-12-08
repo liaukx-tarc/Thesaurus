@@ -36,7 +36,7 @@ public class DetectPlayer : MonoBehaviour
     {
         Debug.DrawRay(transform.position + transform.up, transform.forward * 12.0f, Color.red);
         //Debug.Log(agent.remainingDistance);
-        if(!controller.isHit)
+        if(!controller.isStun)
         {
             if (chaseTimer > 0)
             {
@@ -59,21 +59,25 @@ public class DetectPlayer : MonoBehaviour
                     }
                 }
             }
-            if(controller.stunFinish)
+            if(controller.isStunFinish)
             {
                 chaseTimer = 3;
                 ChaseTarget();
-                controller.stunFinish = false;
+                controller.isStunFinish = false;
+            }
+            if(controller.isSlow)
+            {
+                chaseTimer = 3;
+                ChaseTarget();
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(!controller.isHit)
+        if(!controller.isStun)
         {
-            isNear = false;
-            Debug.Log(Vector3.Distance(transform.position, PlayerController.position));
+            //Debug.Log(Vector3.Distance(transform.position, PlayerController.position));
             if (other.tag == "Player")
             {
                 target = other.transform;
@@ -92,6 +96,7 @@ public class DetectPlayer : MonoBehaviour
                             }
                             else
                             {
+                                isNear = false;
                                 ChaseTarget();
                             }
                         }
@@ -99,6 +104,7 @@ public class DetectPlayer : MonoBehaviour
                 }
                 else if (Vector3.Distance(transform.position, target.position) < 6f)
                 {
+                    isNear = false;
                     chaseTimer = 3;
                     ChaseTarget();
                 }

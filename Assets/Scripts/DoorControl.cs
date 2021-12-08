@@ -7,12 +7,14 @@ public class DoorControl : MonoBehaviour
     public float openAngle, changingSpeed;
     float closeAngle, targetAngle;
     public bool doorOpening, doorClosing; // The boolen to call door close/open
+    public bool isOpen;
     public static bool isLock; //The boolen to lock all the door
     bool isSmaller;
 
     void Start()
     {
         isLock = false;
+        isOpen = false;
 
         closeAngle = transform.localRotation.eulerAngles.y;
         targetAngle = transform.localRotation.eulerAngles.y - openAngle;
@@ -53,6 +55,7 @@ public class DoorControl : MonoBehaviour
                 else
                     targetAngle = transform.localRotation.eulerAngles.y - closeAngle;
                 doorOpening = false;
+                isOpen = true;
             }
         }
 
@@ -71,6 +74,7 @@ public class DoorControl : MonoBehaviour
                 else
                     targetAngle = transform.localRotation.eulerAngles.y - closeAngle;
                 doorOpening = false;
+                isOpen = true;
             }
         }
     }
@@ -89,6 +93,7 @@ public class DoorControl : MonoBehaviour
             {
                 targetAngle = transform.localRotation.eulerAngles.y - openAngle;
                 doorClosing = false;
+                isOpen = false;
             }
         }
 
@@ -104,6 +109,7 @@ public class DoorControl : MonoBehaviour
             {
                 targetAngle = transform.localRotation.eulerAngles.y - openAngle;
                 doorClosing = false;
+                isOpen = false;
             }
         }
     }
