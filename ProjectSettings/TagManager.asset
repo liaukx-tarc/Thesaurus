@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Puzzle
   - Book
+  - Button
   layers:
   - Default
   - TransparentFX
