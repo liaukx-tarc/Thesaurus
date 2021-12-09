@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         maxHp = 2;
         currentHp = maxHp;
         regenTimer = 0;
@@ -120,8 +121,8 @@ public class PlayerController : MonoBehaviour
                 if (stamina > 3)
                     reachMinStamina = true;
             }
-            rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 200;
-            rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 200;
+            rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 100;
+            rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 100;
             mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
             transform.TransformDirection(mInput);
             controller.SimpleMove(mInput * speed);

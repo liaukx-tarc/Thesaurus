@@ -35,7 +35,7 @@ public class BossController : MonoBehaviour
             agent.speed = 6.0f;
             anim.SetBool("isRunning", true);
         }
-        //Debug.Log(agent.remainingDistance);
+        Debug.Log(float.IsInfinity(agent.remainingDistance));
         if (atkCD > 0)
         {
             atkCD -= Time.deltaTime;
@@ -57,7 +57,7 @@ public class BossController : MonoBehaviour
     IEnumerator AtkDelay()
     {
         yield return new WaitForSeconds(1f);
-        if(agent.remainingDistance < 4f)
+        if(agent.remainingDistance < 5f)
         {
             PlayerController.currentHp = 0;
         }
