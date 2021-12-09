@@ -10,7 +10,8 @@ public class MagicSpell : MonoBehaviour
     public bool isAttackDelay;
     private float attackDelay;
     private float alpha;
-    private int layerMask = 1 << 8;
+    private int enemyLayer = 1 << 8;
+    private int interactableLayer = 1 << 9;
     private int proIndex;
     private float r, g, b;
 
@@ -35,7 +36,46 @@ public class MagicSpell : MonoBehaviour
     {
         if(!PlayerController.isDead)
         {
-            if(Input.GetButtonDown("Switch"))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 4, interactableLayer))
+            {
+                if (hit.collider.gameObject.tag == "Door")
+                {
+                    if (Input.GetButton("Interact"))
+                    {
+                        if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
+                        {
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorOpening = true;
+                        }
+                        else
+                        {
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorClosing = true;
+                        }
+                    }
+
+                }
+                else if (hit.collider.gameObject.tag == "Key")
+                {
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponent<KeyCollect>().Collect();
+                    }
+                }
+                else if (hit.collider.gameObject.tag == "Puzzle")
+                {
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().PuzzleControl(true);
+                    }
+                }
+                else if (hit.collider.gameObject.tag == "Book")
+                {
+                    if (Input.GetButton("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
+                    }
+                }
+            }
+            if (Input.GetButtonDown("Switch"))
             {
                 proIndex = (proIndex + 1) % projectile.Length;
                 Debug.Log(proIndex);
@@ -62,11 +102,11 @@ public class MagicSpell : MonoBehaviour
 
             if (isAttackDelay)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out hit, 100, layerMask)
-                    || Physics.Raycast(transform.position - new Vector3(0.2f, 0, 0), transform.forward, out hit, 100, layerMask)
-                    || Physics.Raycast(transform.position + new Vector3(0.2f, 0, 0), transform.forward, out hit, 100, layerMask)
-                    || Physics.Raycast(transform.position - new Vector3(0, 0.2f, 0), transform.forward, out hit, 100, layerMask)
-                    || Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), transform.forward, out hit, 100, layerMask))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0.2f, 0, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0.2f, 0, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0, 0.2f, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), transform.forward, out hit, 100, enemyLayer))
                 {
                     if (hit.collider.tag == "Enemy")
                     {

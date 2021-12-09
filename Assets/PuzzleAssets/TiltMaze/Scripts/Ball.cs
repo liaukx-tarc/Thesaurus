@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Ball : MonoBehaviour
 {
     public GameObject puzzleObj;
-
+    public GameObject crystal;
     public RawImage LevelClear;
     public GameObject Confetti;
     public GameObject Sphere;
@@ -42,6 +42,7 @@ public class Ball : MonoBehaviour
 
         //Tell the world controller the puzzle sloved
         Debug.Log("Complete");
+        crystal.GetComponent<ActivePuzzle>().isComplete = true;
         WorldController.puzzleSloved++;
         WorldController.puzzleComplete = true;
         puzzleObj.SetActive(false);

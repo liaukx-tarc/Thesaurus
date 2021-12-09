@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     static public int currentHp;
     public int maxHp;
     static public float regenTimer;
-    private int layerMask = 1 << 9;
 
     //Check House
     public Transform[] housePosition;
@@ -99,47 +98,6 @@ public class PlayerController : MonoBehaviour
                 speed = 5;
                 isRunning = false;
             }
-
-            if (Physics.Raycast(fpCamera.position, transform.forward, out hit, 4, layerMask))
-            {
-                //Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject.tag == "Door")
-                {
-                    if (Input.GetButton("Interact"))
-                    {
-                        if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
-                        {
-                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorOpening = true;
-                        }
-                        else
-                        {
-                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorClosing = true;
-                        }
-                    }
-
-                }
-                else if (hit.collider.gameObject.tag == "Key")
-                {
-                    if (Input.GetButton("Interact"))
-                    {
-                        hit.collider.gameObject.GetComponent<KeyCollect>().Collect();
-                    }
-                }
-                else if (hit.collider.gameObject.tag == "Puzzle")
-                {
-                    if (Input.GetButton("Interact"))
-                    {
-                        hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().PuzzleControl(true);
-                    }
-                }
-                else if (hit.collider.gameObject.tag == "Book")
-                {
-                    if (Input.GetButton("Interact"))
-                    {
-                        hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
-                    }
-                }
-            }
             if (isAttack)
             {
                 armAnim.SetTrigger("isAttack");
@@ -168,7 +126,7 @@ public class PlayerController : MonoBehaviour
             transform.TransformDirection(mInput);
             controller.SimpleMove(mInput * speed);
             transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
-            rotationY = Mathf.Clamp(rotationY, -30f, 30f);
+            rotationY = Mathf.Clamp(rotationY, -45f, 45f);
             fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
             if(currentHp < maxHp)
             {
