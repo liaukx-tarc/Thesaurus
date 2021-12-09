@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
     public GameObject puzzleObj;
-
+    public GameObject crystal;
     TimerScript timer;
     public GameObject Confetti;
     public static Difficulty currDifficulty=Difficulty.Easy;
@@ -371,6 +371,7 @@ public class GameController : MonoBehaviour {
         
         //Tell the world controller the puzzle sloved
         Debug.Log("Complete");
+        crystal.GetComponent<ActivePuzzle>().isComplete = true;
         WorldController.puzzleSloved++;
         WorldController.puzzleComplete = true;
         puzzleObj.SetActive(false);   

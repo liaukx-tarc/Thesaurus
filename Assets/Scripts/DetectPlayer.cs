@@ -35,7 +35,7 @@ public class DetectPlayer : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position + transform.up, transform.forward * 12.0f, Color.red);
-        Debug.Log(isPlayerDetected);
+        //Debug.Log(isPlayerDetected);
         if(!controller.isStun)
         {
             if (chaseTimer > 0)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PuzzleDisplay : MonoBehaviour
 {
 	public GameObject puzzleObj;
-
+    public GameObject crystal;
 	public GameObject Confetti;
     // this puzzle texture.
     public Texture PuzzleImage;
@@ -41,7 +41,7 @@ public class PuzzleDisplay : MonoBehaviour
 	private Vector3 Position;
 
 	// has the puzzle been completed?
-	public bool Complete = false;
+	static public bool Complete = false;
     public RawImage LevelClearobj;
 
     // Use this for initialization
@@ -254,7 +254,8 @@ public class PuzzleDisplay : MonoBehaviour
 		
 		//Tell the world controller the puzzle sloved
 		Debug.Log("Complete");
-		WorldController.puzzleSloved++;
+        crystal.GetComponent<ActivePuzzle>().isComplete = true;
+        WorldController.puzzleSloved++;
 		WorldController.puzzleComplete = true;
 		puzzleObj.SetActive(false);
 	}
