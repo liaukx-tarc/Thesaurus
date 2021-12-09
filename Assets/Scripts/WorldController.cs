@@ -9,9 +9,11 @@ public class WorldController : MonoBehaviour
     public GameObject characterCamera;
     static public bool isEscapeMode;
     static public bool isPlayerOut;
+    static public bool isWin;
     public GameObject boss;
     public GameObject spawnMonster;
     public bool isMonsterSpawn;
+    public GameObject canvas;
 
     //Explore Area
     static public int keyCollected;
@@ -28,12 +30,16 @@ public class WorldController : MonoBehaviour
     public GameObject[] puzzleAreaDoor;
     public GameObject puzzleAreaCamera;
 
+    //Border
+    public GameObject borderCamera;
+    public GameObject cityBorder;
+    bool borderClose, borderOpening;
+
     //Mana Ball
     static public int manaBallNum;
     public int manaBallNeeded;
     public GameObject manaBallCollection;
-    public GameObject cityBorder;
-    bool borderClose;
+    public GameObject manaBallCamera;
 
     //dead scene
     public GameObject deadScene;
@@ -49,8 +55,10 @@ public class WorldController : MonoBehaviour
         puzzleAreaClear = false;
         puzzleComplete = false;
         borderClose = false;
+        borderOpening = false;
         isPlayerOut = false;
         isMonsterSpawn = false;
+        isWin = false;
 
         deadAlpha = 0;
     }
@@ -70,6 +78,7 @@ public class WorldController : MonoBehaviour
                 if (keyCollected == keyNum && !exploreAreaClear)
                 {
                     exploreAreaClear = true;
+                    canvas.SetActive(false);
                     OpenDoor(exploreAreaDoor, exploreAreaCamera);
                 }
 
@@ -80,6 +89,7 @@ public class WorldController : MonoBehaviour
 
                     if (puzzleSloved == puzzleNum && !puzzleAreaClear)
                     {
+                        canvas.SetActive(false);
                         puzzleAreaClear = true;
                         OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
                     }
@@ -88,9 +98,26 @@ public class WorldController : MonoBehaviour
 
             else
             {
+                if(borderOpening)
+                {
+                    StartCoroutine(BorderEnable(true));
+
+                    if (cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") >= 1.650f)
+                    {
+                        borderClose = false;
+                        borderOpening = false;
+
+                        manaBallCollection.SetActive(true);
+                        manaBallNum = 0;
+                        borderCamera.SetActive(false);
+                        manaBallCamera.SetActive(true);
+                        StartCoroutine(StopCutScene(manaBallCamera, 5));
+                    }
+                }
+
                 if (manaBallNum >= manaBallNeeded && !borderClose)
                 {
-                    StartCoroutine(BorderDisable());
+                    StartCoroutine(BorderEnable(false));
                 }
             }
         }
@@ -108,44 +135,58 @@ public class WorldController : MonoBehaviour
     {
         characterCamera.SetActive(false);
         camera.SetActive(true);
-        StartCoroutine(StopCutScene(camera));
+        StartCoroutine(StopCutScene(camera, cutSceneDuration));
 
         for (int i = 0; i < door.Length; i++)
         {
             door[i].GetComponent<DoorControl>().doorOpening = true;
         }
     }
-
-    IEnumerator StopCutScene(GameObject camera)
+    
+    IEnumerator StopCutScene(GameObject camera, float cutSceneDuration)
     {
         yield return new WaitForSeconds(cutSceneDuration);
         camera.SetActive(false);
+        canvas.SetActive(true);
         characterCamera.SetActive(true);
     }
 
     public void IntiEscapePhase()
     {
-        manaBallCollection.SetActive(true);
         cityBorder.SetActive(true);
-        manaBallNum = 0;
+        //Start Border Cut Scene
+        canvas.SetActive(false);
+        characterCamera.SetActive(false);
+        borderCamera.SetActive(true);
+        borderOpening = true;
     }
+
     public void SpawnMonster()
     {
         boss.SetActive(true);
         spawnMonster.SetActive(true);
     }
 
-    IEnumerator BorderDisable()
+    IEnumerator BorderEnable(bool state)
     {
         yield return new WaitForSeconds(1f);
         
-        cityBorder.GetComponent<Renderer>().material.SetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a",
-            cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") - 0.005f);
-        
-        if (cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") <= 0)
+        if(state)
         {
-            borderClose = true;
-            cityBorder.SetActive(false);
+            cityBorder.GetComponent<Renderer>().material.SetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a", 
+                cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") + 0.01f);
+        }
+
+        else
+        {
+            cityBorder.GetComponent<Renderer>().material.SetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a",
+            cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") - 0.005f);
+
+            if (cityBorder.GetComponent<Renderer>().material.GetFloat("Vector1_83a9b54fc6b549fe90acb3e18d8bec2a") <= 0)
+            {
+                borderClose = true;
+                cityBorder.SetActive(false);
+            }
         }
     }
 }
