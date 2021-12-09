@@ -86,18 +86,18 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(fpCamera.position, transform.forward, out hit, 4, layerMask))
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.tag == "Door")
                 {
                     if (Input.GetButton("Interact"))
                     {
-                        if (!hit.collider.gameObject.GetComponent<DoorControl>().isOpen)
+                        if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
                         {
-                            hit.collider.gameObject.GetComponent<DoorControl>().doorOpening = true;
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorOpening = true;
                         }
                         else
                         {
-                            hit.collider.gameObject.GetComponent<DoorControl>().doorClosing = true;
+                            hit.collider.gameObject.GetComponentInParent<DoorControl>().doorClosing = true;
                         }
                     }
 

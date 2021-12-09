@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
+
 
 public class GameController : MonoBehaviour {
-    public bool complete;
     public GameObject puzzleObj;
 
+    TimerScript timer;
+    public GameObject Confetti;
     public static Difficulty currDifficulty=Difficulty.Easy;
 
     public enum Difficulty
@@ -28,8 +31,9 @@ public class GameController : MonoBehaviour {
     //Botton Button
     public GameObject Homebtn,reloadbtn, hintbtn, undobtn;
 
-    //Level clear and Loading Object
-    public GameObject LevelClearobj, Solvingobj;
+    //Loading Object
+    public GameObject Solvingobj;
+    public RawImage LevelClearobj;
 
 
     public  int currLevel = 1;
@@ -88,8 +92,6 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
-        complete = false;
-
         BoxSize = boxSize;
         LeftTopPositon = LeftTopPos;
        
@@ -353,26 +355,25 @@ public class GameController : MonoBehaviour {
 
     public void LevelClear()
     {
-        print("LEVEL CLEAR");
-        LevelClearobj.SetActive(true);
+       
+        timer = FindObjectOfType<TimerScript>();
+        timer.StopTimer();
+        Confetti.SetActive(true);
+        LevelClearobj.gameObject.SetActive(true);
         HintArrow.transform.parent = this.transform;
         StartCoroutine(AfterLevelClear());
-
-        //Tell the world controller the puzzle sloved
-        if(!complete)
-        {
-            Debug.Log("Complete");
-            WorldController.puzzleSloved++;
-            puzzleObj.SetActive(false);
-            WorldController.puzzleComplete = true;
-            complete = true;
-        }
     }
 
     IEnumerator AfterLevelClear()
     {
         yield return new WaitForSeconds(2f);
-        LevelClearobj.SetActive(false);
+        LevelClearobj.gameObject.SetActive(false);
+        
+        //Tell the world controller the puzzle sloved
+        Debug.Log("Complete");
+        WorldController.puzzleSloved++;
+        WorldController.puzzleComplete = true;
+        puzzleObj.SetActive(false);   
     }
 
 
