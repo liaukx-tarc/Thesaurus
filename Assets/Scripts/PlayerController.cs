@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float stamina;
     public bool isRunning;
     public bool reachMinStamina;
+    static public bool isInsideHouse;
 
     private Vector3 mInput;
     public CharacterController controller;
@@ -46,12 +47,13 @@ public class PlayerController : MonoBehaviour
         stamina = 5;
         isRunning = false;
         reachMinStamina = true;
+        isInsideHouse = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(stamina);
+        //Debug.Log(isInsideHouse);
         if(currentHp > 0)
         {
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)

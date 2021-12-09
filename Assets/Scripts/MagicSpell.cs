@@ -82,6 +82,10 @@ public class MagicSpell : MonoBehaviour
                             hit.collider.GetComponentInParent<EnemyController>().isStun = true;
                         }
                     }
+                    else if (hit.collider.tag =="Button")
+                    {
+                        hit.collider.GetComponentInParent<PlatformButton>().isHit = true;
+                    }
                 }
                 attackDelay -= Time.deltaTime;
             }

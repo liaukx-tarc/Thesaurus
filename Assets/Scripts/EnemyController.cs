@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isStun)
+        if (isStun)
         {
             anim.speed = 0;
             agent.speed = 0.0f;
@@ -100,17 +100,32 @@ public class EnemyController : MonoBehaviour
                         }
                     }
                     else
-                    { 
-                        for(int i = 0; i < doorPosition.Length; i++)
+                    {
+                        for (int i = 0; i < doorPosition.Length; i++)
                         {
-
+                            if (Vector3.Distance(doorPosition[i].position, this.transform.position) < 2.0f)
+                            {
+                                isNearDoor = true;
+                                break;
+                            }
                         }
-                        agent.speed = 4.0f * moveSpeed;
-                        anim.SetBool("isRunning", true);
+                        if (isNearDoor && PlayerController.isInsideHouse)
+                        {
+                            agent.speed = 0.0f;
+                            anim.SetBool("isRunning", false);
+                            anim.SetBool("isWalking", false);
+                        }
+                        else
+                        {
+                            agent.speed = 4.0f * moveSpeed;
+                            anim.SetBool("isRunning", true);
+                            anim.SetBool("isWalking", false);
+                        }
                     }
                 }
                 else
                 {
+                    isNearDoor = false;
                     agent.speed = 1.5f * moveSpeed;
                     anim.SetBool("isRunning", false);
                     anim.SetBool("isWalking", true);

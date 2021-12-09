@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4214010696328490830
 Transform:
   m_ObjectHideFlags: 0
@@ -66,15 +66,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5feeff8db4d04a47b75aef95038d5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHit: 0
   isStun: 0
-  stunFinish: 0
-  stunTimer: 0
+  isStunStart: 0
+  isStunFinish: 0
+  stunTime: 0
+  isSlow: 0
+  isSlowStart: 0
+  moveSpeed: 0
   magicType: 0
   hitColor:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.37992162, g: 0.83049995, b: 0.8679245, a: 1}
   - {r: 0.7991121, g: 0.45624778, b: 0.9056604, a: 1}
+  doorPosition:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isNearDoor: 0
 --- !u!195 &1046541810
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -84,7 +95,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4214010696328490821}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
