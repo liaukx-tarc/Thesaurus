@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4214010696428774824}
   - component: {fileID: 4214010696428774839}
   - component: {fileID: 4214010696428774838}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Detection Collider
   m_TagString: Enemy
   m_Icon: {fileID: 0}

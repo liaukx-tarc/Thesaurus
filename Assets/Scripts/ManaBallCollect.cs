@@ -13,7 +13,8 @@ public class ManaBallCollect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == manaBallName)
+        Debug.Log(other.name);
+        if(other.name == manaBallName)
         {
             other.gameObject.SetActive(false);
             WorldController.manaBallNum++;
