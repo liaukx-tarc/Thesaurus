@@ -24,6 +24,9 @@ public class EnemyController : MonoBehaviour
 
     public Transform[] doorPosition;
     public bool isNearDoor;
+
+    public bool isLastSpawn;
+
     // Start is called before the first frame update
     void Start()
     {

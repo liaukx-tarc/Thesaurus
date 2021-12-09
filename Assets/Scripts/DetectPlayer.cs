@@ -17,6 +17,8 @@ public class DetectPlayer : MonoBehaviour
     public float delay;
     private float angle;
     private float chaseTimer;
+    public float chaseTime;
+
     private int index;
     // Start is called before the first frame update
     void Start()
@@ -28,16 +30,28 @@ public class DetectPlayer : MonoBehaviour
         index = 0;
         agent = GetComponentInParent<NavMeshAgent>();
         controller = GetComponentInParent<EnemyController>();
-        agent.destination = patrolPoint[index].position;
+        if(patrolPoint.Length != 0)
+        {
+            agent.destination = patrolPoint[index].position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position + transform.up, transform.forward * 12.0f, Color.red);
         //Debug.Log(isPlayerDetected);
         if(!controller.isStun)
         {
+            if (controller.isLastSpawn)
+            {
+                chaseTime = 3000;
+                chaseTimer = chaseTime;
+                ChaseTarget();
+            }
+            else
+            {
+                chaseTime = 3;
+            }
             if (chaseTimer > 0)
             {
                 chaseTimer -= Time.deltaTime;
@@ -52,22 +66,25 @@ public class DetectPlayer : MonoBehaviour
                 {
                     if (!agent.pathPending && agent.remainingDistance < 1.5f)
                     {
-                        index++;
-                        index = index % patrolPoint.Length;
-                        agent.destination = patrolPoint[index].position;
-                        StartCoroutine(Idle());
+                        if(patrolPoint.Length != 0)
+                        {
+                            index++;
+                            index = index % patrolPoint.Length;
+                            agent.destination = patrolPoint[index].position;
+                            StartCoroutine(Idle());
+                        }
                     }
                 }
             }
             if(controller.isStunFinish)
             {
-                chaseTimer = 3;
+                chaseTimer = chaseTime;
                 ChaseTarget();
                 controller.isStunFinish = false;
             }
             if(controller.isSlow)
             {
-                chaseTimer = 3;
+                chaseTimer = chaseTime;
                 ChaseTarget();
             }
         }
@@ -89,7 +106,7 @@ public class DetectPlayer : MonoBehaviour
                     {
                         if (hit.collider.gameObject.tag == "Player")
                         {
-                            chaseTimer = 3;
+                            chaseTimer = chaseTime;
                             if (Vector3.Distance(transform.position, target.position) < 2.5f)
                             {
                                 isNear = true;
@@ -105,7 +122,7 @@ public class DetectPlayer : MonoBehaviour
                 else if (Vector3.Distance(transform.position, target.position) < 6f)
                 {
                     isNear = false;
-                    chaseTimer = 3;
+                    chaseTimer = chaseTime;
                     ChaseTarget();
                 }
             }

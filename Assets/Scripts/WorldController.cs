@@ -8,6 +8,10 @@ public class WorldController : MonoBehaviour
     public float cutSceneDuration;
     public GameObject characterCamera;
     static public bool isEscapeMode;
+    static public bool isPlayerOut;
+    public GameObject boss;
+    public GameObject spawnMonster;
+    public bool isMonsterSpawn;
 
     //Explore Area
     static public int keyCollected;
@@ -45,6 +49,8 @@ public class WorldController : MonoBehaviour
         puzzleAreaClear = false;
         puzzleComplete = false;
         borderClose = false;
+        isPlayerOut = false;
+        isMonsterSpawn = false;
 
         deadAlpha = 0;
     }
@@ -55,8 +61,12 @@ public class WorldController : MonoBehaviour
         if(!PlayerController.isDead)
         {
             if (!isEscapeMode)
-
             {
+                if(!isMonsterSpawn && isPlayerOut)
+                {
+                    SpawnMonster();
+                    isMonsterSpawn = true;
+                }
                 if (keyCollected == keyNum && !exploreAreaClear)
                 {
                     exploreAreaClear = true;
@@ -119,6 +129,12 @@ public class WorldController : MonoBehaviour
         cityBorder.SetActive(true);
         manaBallNum = 0;
     }
+    public void SpawnMonster()
+    {
+        boss.SetActive(true);
+        spawnMonster.SetActive(true);
+    }
+
     IEnumerator BorderDisable()
     {
         yield return new WaitForSeconds(1f);
