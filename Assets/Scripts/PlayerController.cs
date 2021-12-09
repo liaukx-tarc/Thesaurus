@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         deathAngle = 0;
         position = this.transform.position;
         handAngle = handCamera.eulerAngles.x;
-        stamina = 5;
+        stamina = 20;
         isRunning = false;
         reachMinStamina = true;
         isInsideHouse = false;
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             }
             if(isRunning)
             {
-                stamina -= Time.deltaTime *1.5f;
+                stamina -= Time.deltaTime * 1.25f;
             }
             else if(stamina < 5 && !isRunning)
             {
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             }
             if(!reachMinStamina)
             {
-                if (stamina > 2)
+                if (stamina > 3)
                     reachMinStamina = true;
             }
             rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 200;

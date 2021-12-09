@@ -117,7 +117,7 @@ public class EnemyController : MonoBehaviour
                         }
                         else
                         {
-                            agent.speed = 4.0f * moveSpeed;
+                            agent.speed = 8.0f * moveSpeed;
                             anim.SetBool("isRunning", true);
                             anim.SetBool("isWalking", false);
                         }
@@ -126,7 +126,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     isNearDoor = false;
-                    agent.speed = 1.5f * moveSpeed;
+                    agent.speed = 4f * moveSpeed;
                     anim.SetBool("isRunning", false);
                     anim.SetBool("isWalking", true);
                 }
