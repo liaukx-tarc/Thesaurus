@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
     static public float regenTimer;
     private int layerMask = 1 << 9;
 
+    //Check House
+    public Transform[] housePosition;
+    public int houseTriggerDistance;
+    public bool[] isNearHouse;
+    public GameObject[] houseInterior;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +54,14 @@ public class PlayerController : MonoBehaviour
         isRunning = false;
         reachMinStamina = true;
         isInsideHouse = false;
+
+        //Check House
+        isNearHouse = new bool[housePosition.Length];
+
+        for (int i = 0; i < isNearHouse.Length; i++)
+        {
+            isNearHouse[i] = false;
+        }
     }
 
     // Update is called once per frame
@@ -186,9 +200,31 @@ public class PlayerController : MonoBehaviour
             handCamera.eulerAngles = new Vector3(handAngle, handCamera.eulerAngles.y, handCamera.eulerAngles.z);
         }
         position = this.transform.position;
+
+        CheckHouseDistance();
     }
-    //private void LateUpdate()
-    //{
-    //    this.gameObject.transform.Rotate(rotationY, 0, 0);
-    //}
+
+    void CheckHouseDistance()
+    {
+        for (int i = 0; i < housePosition.Length; i++)
+        {
+            if (Vector3.Distance(housePosition[i].position, this.transform.position) < houseTriggerDistance)
+            {
+                if (!isNearHouse[i])
+                {
+                    houseInterior[i].SetActive(true);
+                    isNearHouse[i] = true;
+                }
+            }
+
+            else
+            {
+                if (isNearHouse[i])
+                {
+                    houseInterior[i].SetActive(false);
+                    isNearHouse[i] = false;
+                }
+            }
+        }
+    }
 }

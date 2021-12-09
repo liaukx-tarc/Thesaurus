@@ -58,7 +58,11 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.14592783
+    - 0.030671937
+    - 0.010994107
+    - 0.0015854655
     globalScale: 1
     meshCompression: 3
     addColliders: 0
