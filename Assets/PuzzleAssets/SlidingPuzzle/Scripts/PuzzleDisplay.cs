@@ -253,9 +253,16 @@ public class PuzzleDisplay : MonoBehaviour
         LevelClearobj.gameObject.SetActive(false);
 		
 		//Tell the world controller the puzzle sloved
-		Debug.Log("Complete");
         crystal.GetComponent<ActivePuzzle>().isComplete = true;
-        WorldController.puzzleSloved++;
+		for (int i = 0; i < crystal.transform.childCount; i++)
+		{
+			crystal.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0.1f, 0.1f, 0.1f));
+		}
+		Material[] materials = new Material[1];
+		materials[0] = crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials[0];
+		crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials = materials;
+
+		WorldController.puzzleSloved++;
 		WorldController.puzzleComplete = true;
 		puzzleObj.SetActive(false);
 	}
