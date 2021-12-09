@@ -7,8 +7,6 @@ public class GhostLeg : MonoBehaviour
 {
 	public int col;
     public int row;
-    public int minFoot;
-    public int maxFoot;
     public int moveSpeed;
     public bool isActivate;
     public GameObject footPrefab;
@@ -18,7 +16,7 @@ public class GhostLeg : MonoBehaviour
     public GameObject controlPlatformLeft;
     public GameObject controlPlatformRight;
 
-    bool[][] footArr;
+    public bool[][] footArr;
     public int targetNum, ansNum;
 	// Start is called before the first frame update
 
@@ -34,10 +32,6 @@ public class GhostLeg : MonoBehaviour
         WriteNum();
 
         FindGoal();
-        minFoot = row / 3;
-        maxFoot = row / 2;
-
-        ButtonSpawn();
     }
 
     // Update is called once per frame
@@ -221,34 +215,6 @@ public class GhostLeg : MonoBehaviour
             newButton.GetComponent<PlatformButton>().buttonNum = i;
         }
         
-    }
-
-    void ButtonSpawn()
-    {
-        for (int i = 0; i <= col; i++)
-        {
-            float positionX = 0;
-
-            if ((col + 1) % 4 == 2)
-            {
-                if (i / 4 == (col + 1) / 4)
-                {
-                    positionX = 1.5f;
-                }
-
-            }
-
-            if ((col + 1) % 4 == 3)
-            {
-                if (i / 4 == (col + 1) / 4)
-                {
-                    positionX = 0.75f;
-                }
-            }
-
-            
-        }
-       
     }
 
     IEnumerator ActivatePlatform()

@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonNum: 0
+  waitingTime: 3.2
   isHit: 0
+  ansPrefab: {fileID: 2721724471787572639, guid: bf4849165480cf94abcde2a0e316b9c1, type: 3}
 --- !u!1 &3943198930112670867
 GameObject:
   m_ObjectHideFlags: 0

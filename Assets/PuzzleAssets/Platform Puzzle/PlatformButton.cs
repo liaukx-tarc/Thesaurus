@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlatformButton : MonoBehaviour
 {
     public int buttonNum;
+    public float waitingTime;
     public bool isHit;
+    public GameObject ansPrefab;
 
+    bool isActive;
     string spellTag;
     string colorName;
     GhostLeg ghostLeg;
     GameObject light;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +27,32 @@ public class PlatformButton : MonoBehaviour
 
     private void Update()
     {
-        if (isHit)
+        if (isHit && !isActive)
         {
-            if (buttonNum == ghostLeg.ansNum)
-            {
-                ghostLeg.isActivate = true;
-                light.GetComponent<Renderer>().material.color = new Color(0.45f, 1.0f, 0.15f);
-            }     
-            else
-                light.GetComponent<Renderer>().material.color = new Color(0.79f, 0.06f, 0.19f);
+            StartCoroutine(ShowAns(waitingTime));
+
             isHit = false;
+            isActive = true;
+
+            GameObject AnsObj = Instantiate(ansPrefab, new Vector3(this.transform.position.x, this.transform.position.y - 0.5f,
+                   this.transform.position.z + 0.2f), Quaternion.identity, gameObject.transform);
+
+            AnsObj.GetComponent<GhostLegAns>().inti(buttonNum,
+                GetComponentInParent<GhostLeg>().row,
+                GetComponentInParent<GhostLeg>().col,
+                GetComponentInParent<GhostLeg>().footArr);
         }
+    }
+
+    IEnumerator ShowAns(float waitingTime)
+    {
+        yield return new WaitForSeconds(waitingTime / 9 * GetComponentInParent<GhostLeg>().row);
+        if (buttonNum == ghostLeg.ansNum)
+        {
+            ghostLeg.isActivate = true;
+            light.GetComponent<Renderer>().material.color = new Color(0.45f, 1.0f, 0.15f);
+        }
+        else
+            light.GetComponent<Renderer>().material.color = new Color(0.79f, 0.06f, 0.19f);
     }
 }
