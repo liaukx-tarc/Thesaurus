@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
 
     public int magicType;
     public Color[] hitColor;
+
+    public Transform[] doorPosition;
+    public bool isNearDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class EnemyController : MonoBehaviour
         moveSpeed = 1.0f;
         magicType = 0;
         atkDelayTime = 0.5f;
+        isNearDoor = false;
     }
 
     // Update is called once per frame
@@ -96,7 +100,11 @@ public class EnemyController : MonoBehaviour
                         }
                     }
                     else
-                    {
+                    { 
+                        for(int i = 0; i < doorPosition.Length; i++)
+                        {
+
+                        }
                         agent.speed = 4.0f * moveSpeed;
                         anim.SetBool("isRunning", true);
                     }
