@@ -47,6 +47,7 @@ public class WorldController : MonoBehaviour
     //dead scene
     public GameObject blackScene;
     private float blackAlpha;
+    public GameObject deathMenu;
 
     //end scene
     public GameObject[] entranceDoor;
@@ -54,12 +55,20 @@ public class WorldController : MonoBehaviour
     public GameObject endCamera;
     public bool isSceneComplete;
 
+    //Pause Menu
+    public GameObject pauseMenu;
+    public GameObject instruction;
+    public GameObject pauseButton;
+
     // Start is called before the first frame update
     void Start()
     {
         keyNum = 2;
         keyCollected = 0;
+
+        puzzleSloved = 0;
         isEscapeMode = false;
+
         exploreAreaClear = false;
         puzzleAreaClear = false;
         puzzleComplete = false;
@@ -70,11 +79,15 @@ public class WorldController : MonoBehaviour
         isWin = false;
         startEndScene = false;
         isSceneComplete = false;
+        isInPuzzle = false;
+        puzzleUnlock = false;
 
         CheckEndGame.manaballNeeded = manaBallNeeded;
         ManaBallCollect.manaBallNeeded = manaBallNeeded;
 
         blackAlpha = 0;
+
+        manaBallNum = 0;
     }
 
     // Update is called once per frame
@@ -96,6 +109,7 @@ public class WorldController : MonoBehaviour
                     characterCamera.SetActive(true);
                     uiCanvas.SetActive(true);
                     puzzleComplete = false;
+                    isInPuzzle = false;
 
                     if (puzzleSloved == puzzleNum && !puzzleAreaClear)
                     {
@@ -163,6 +177,49 @@ public class WorldController : MonoBehaviour
                     }
                 }
             }
+
+            if (Input.GetButtonDown("Escape"))
+            {
+                if(Time.timeScale != 0)
+                {
+                    if (!isInPuzzle)
+                    {
+                        blackScene.SetActive(true);
+                        blackAlpha = 0.75f;
+                        blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
+                        
+                        instruction.SetActive(false);
+                        pauseButton.SetActive(true);
+                        uiCanvas.SetActive(false);
+                        pauseMenu.SetActive(true);
+                        Time.timeScale = 0;
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = false;
+                    }
+
+                    else
+                    {
+                        if (puzzleUnlock)
+                        {
+                            isInPuzzle = false;
+                            characterCamera.SetActive(true);
+                            uiCanvas.SetActive(true);
+                        }
+                    }
+                }
+
+                else
+                {
+                    blackAlpha = 0;
+                    blackScene.SetActive(false);
+                    blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
+
+                    pauseMenu.SetActive(false);
+                    uiCanvas.SetActive(true);
+                    Time.timeScale = 1;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+            }
         }
        else
         {
@@ -173,25 +230,11 @@ public class WorldController : MonoBehaviour
                 blackAlpha += Time.deltaTime * 0.5f;
             }
             blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
-        }
 
-        if(Input.GetButtonDown("Escape"))
-        {
-            if(!isInPuzzle)
-            {
-                uiCanvas.SetActive(false);
-            }
-
-            else
-            {
-                if(puzzleUnlock)
-                {
-                    isInPuzzle = false;
-                    characterCamera.SetActive(true);
-                    uiCanvas.SetActive(true);
-                }
-            }
-        }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            deathMenu.SetActive(true);
+        }  
     }
 
     void OpenDoor(GameObject[] door, GameObject camera)
