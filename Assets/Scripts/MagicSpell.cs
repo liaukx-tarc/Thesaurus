@@ -103,12 +103,13 @@ public class MagicSpell : MonoBehaviour
                 this.gameObject.GetComponentInChildren<Light>().color = new Color(r, g, b, 1.0f);
                 isSwitchColor = true;
                 intensity = 0;
+                atkTimer = 3f;
             }
 
             if(isSwitchColor)
             {
                 intensity += Time.deltaTime;
-                this.gameObject.GetComponent<Light>().intensity = Mathf.Lerp(0, 6, intensity);
+                this.gameObject.GetComponentInChildren  <Light>().intensity = Mathf.Lerp(0, 6, intensity);
                 if(intensity > 6)
                 {
                     isSwitchColor = false;

@@ -10,6 +10,7 @@ public class DoorControl : MonoBehaviour
     public bool isOpen;
     public static bool isLock; //The boolen to lock all the door
     bool isSmaller;
+    public bool isLastDoor;
 
     void Start()
     {
@@ -29,6 +30,10 @@ public class DoorControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(isLastDoor)
+        {
+            isLock = false;
+        }
         if (!isLock)
         {
             if (doorOpening)
@@ -36,9 +41,14 @@ public class DoorControl : MonoBehaviour
             else if (doorClosing)
                 CloseDoor();
         }
+        else
+        {
+            if (doorOpening)
+                CloseDoor();
+        }
     }
 
-    void OpenDoor()
+    public void OpenDoor()
     {
         if (isSmaller)
         {
