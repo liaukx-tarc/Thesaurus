@@ -71,7 +71,10 @@ public class WorldController : MonoBehaviour
         isWin = false;
         startEndScene = false;
         isSceneComplete = false;
+
         CheckEndGame.manaballNeeded = manaBallNeeded;
+        ManaBallCollect.manaBallNeeded = manaBallNeeded;
+
         deadAlpha = 0;
     }
 
@@ -136,7 +139,9 @@ public class WorldController : MonoBehaviour
                     {
                         entranceDoor[i].GetComponent<DoorControl>().doorOpening = true;
                     }
+                    borderClose = true;
                 }
+
                 if(isWin)
                 {
                     if(!startEndScene)
@@ -147,6 +152,7 @@ public class WorldController : MonoBehaviour
                         startEndScene = true;
                         StartCoroutine(StartEndScreen());
                     }
+
                     if(isSceneComplete)
                     {
                         blackScene.SetActive(true);

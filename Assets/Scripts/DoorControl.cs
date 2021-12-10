@@ -32,18 +32,21 @@ public class DoorControl : MonoBehaviour
     {
         if(isLastDoor)
         {
-            isLock = false;
+            if (doorOpening)
+                OpenDoor();
         }
-        if (!isLock)
+
+        else if (!isLock)
         {
             if (doorOpening)
                 OpenDoor();
             else if (doorClosing)
                 CloseDoor();
         }
+
         else
         {
-            if (doorOpening)
+            if (isOpen)
                 CloseDoor();
         }
     }
