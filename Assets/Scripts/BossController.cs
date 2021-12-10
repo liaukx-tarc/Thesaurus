@@ -13,6 +13,8 @@ public class BossController : MonoBehaviour
     public bool stunFinish;
     public bool isAtk;
     public float stunTimer;
+    static public bool roarComplete;
+    private bool isRoar;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,36 +26,60 @@ public class BossController : MonoBehaviour
         isStun = false;
         stunFinish = false;
         isAtk = false;
+        isRoar = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = PlayerController.position;
-        if (!isAtk)
+        if (!roarComplete)
         {
-            agent.speed = 6.0f;
-            anim.SetBool("isRunning", true);
-        }
-        Debug.Log(float.IsInfinity(agent.remainingDistance));
-        if (atkCD > 0)
-        {
-            atkCD -= Time.deltaTime;
-        }
-        if (agent.remainingDistance < 4f && agent.remainingDistance > 0.1f)
-        {
-            agent.speed = 0.0f;
             anim.SetBool("isRunning", false);
-            if (atkCD <= 0)
+            if (!isRoar)
             {
-                anim.SetTrigger("isAttack");
-                atkCD = 3;
-                StartCoroutine(AtkDelay());
-                isAtk = true;
-                StartCoroutine(AtkIdle());
+                agent.speed = 0.0f;
+                anim.SetTrigger("isRoar");
+                StartCoroutine(RoarEnd());
+            }
+            isRoar = true;
+        }
+        else
+        {
+            agent.destination = PlayerController.position;
+            if (!isAtk)
+            {
+                if(agent.remainingDistance > 10f)
+                {
+                    agent.speed = 10.0f;
+                    
+                }
+                else
+                {
+                    agent.speed = 6.0f;
+                }
+                anim.SetBool("isRunning", true);
+            }
+            //Debug.Log(float.IsInfinity(agent.remainingDistance));
+            if (atkCD > 0)
+            {
+                atkCD -= Time.deltaTime;
+            }
+            if (agent.remainingDistance < 4f && agent.remainingDistance > 0.1f)
+            {
+                agent.speed = 0.0f;
+                anim.SetBool("isRunning", false);
+                if (atkCD <= 0)
+                {
+                    anim.SetTrigger("isAttack");
+                    atkCD = 3;
+                    StartCoroutine(AtkDelay());
+                    isAtk = true;
+                    StartCoroutine(AtkIdle());
+                }
             }
         }
     }
+
     IEnumerator AtkDelay()
     {
         yield return new WaitForSeconds(1f);
@@ -66,6 +92,11 @@ public class BossController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         isAtk = false;
+    }
+    IEnumerator RoarEnd()
+    {
+        yield return new WaitForSeconds(7f);
+        roarComplete = true;
     }
     //    if(isHit)
     //    {

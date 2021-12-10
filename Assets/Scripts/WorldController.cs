@@ -14,6 +14,7 @@ public class WorldController : MonoBehaviour
     public GameObject spawnMonster;
     public bool isMonsterSpawn;
     public GameObject canvas;
+    public GameObject bossCamera;
 
     //Explore Area
     static public int keyCollected;
@@ -186,6 +187,18 @@ public class WorldController : MonoBehaviour
     public void SpawnMonster()
     {
         boss.SetActive(true);
+        BossController.roarComplete = false;
+        characterCamera.SetActive(false);
+        bossCamera.SetActive(true);
+        bossCamera.GetComponent<Animator>().SetBool("isNear", true);
+        StartCoroutine(SpawnNormal());
+    }
+
+    IEnumerator SpawnNormal()
+    {
+        yield return new WaitForSeconds(6.0f);
+        characterCamera.SetActive(true);
+        bossCamera.SetActive(false);
         spawnMonster.SetActive(true);
     }
 

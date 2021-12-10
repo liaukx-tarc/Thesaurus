@@ -100,7 +100,7 @@ public class MagicSpell : MonoBehaviour
                     main = psSpell[i].main;
                     main.startColor = new Color(r, g, b, 1.0f);
                 }
-                this.gameObject.GetComponent<Light>().color = new Color(r, g, b, 1.0f);
+                this.gameObject.GetComponentInChildren<Light>().color = new Color(r, g, b, 1.0f);
                 isSwitchColor = true;
                 intensity = 0;
             }
