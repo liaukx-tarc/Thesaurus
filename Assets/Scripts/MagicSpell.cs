@@ -171,7 +171,7 @@ public class MagicSpell : MonoBehaviour
                 isAttackDelay = false;
             }
             Debug.DrawRay(transform.position, transform.forward * 1000.0f, Color.red);
-            if (atkTimer <= 0.0f && Input.GetButtonDown("Fire1"))
+            if (atkTimer <= 0.0f && Input.GetButtonDown("Fire1") && Time.timeScale != 0)
             {
                 PlayerController.isAttack = true;
                 Instantiate(projectile[proIndex], transform.position, transform.rotation);
