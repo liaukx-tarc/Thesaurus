@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     float rotationX, rotationY;
     public float speed;
     public Animator armAnim;
+    public Animator modelAnim;
     static public bool isAttack;
     private Transform fpCamera;
     public Transform handCamera;
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public bool[] isNearHouse;
     public GameObject[] houseInterior;
 
+    private bool startRun;
+    public GameObject light;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
         isRunning = false;
         reachMinStamina = true;
         isInsideHouse = false;
+        startRun = false;
 
         //Check House
         isNearHouse = new bool[housePosition.Length];
@@ -68,23 +73,47 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Debug.Log(isInsideHouse);
-        if(currentHp > 0)
+        if(WorldController.startEndScene)
         {
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            if(!startRun)
             {
-                armAnim.SetBool("isWalking", true);
+                transform.position = new Vector3(9.60f, 10.0f, 38.93f);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                startRun = true;
+                modelAnim.SetBool("isRunning", true);
+                light.SetActive(false);
             }
             else
             {
-                armAnim.SetBool("isWalking", false);
+                transform.Translate(transform.forward * Time.deltaTime *10);
             }
-            if (Input.GetButton("Run"))
+        }
+        else
+        {
+            if (currentHp > 0)
             {
-                if (stamina > 0 && reachMinStamina)
+                if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
-                    armAnim.SetBool("isRunning", true);
-                    speed = 8;
-                    isRunning = true;
+                    armAnim.SetBool("isWalking", true);
+                }
+                else
+                {
+                    armAnim.SetBool("isWalking", false);
+                }
+                if (Input.GetButton("Run"))
+                {
+                    if (stamina > 0 && reachMinStamina)
+                    {
+                        armAnim.SetBool("isRunning", true);
+                        speed = 8;
+                        isRunning = true;
+                    }
+                    else
+                    {
+                        armAnim.SetBool("isRunning", false);
+                        speed = 5;
+                        isRunning = false;
+                    }
                 }
                 else
                 {
@@ -92,72 +121,67 @@ public class PlayerController : MonoBehaviour
                     speed = 5;
                     isRunning = false;
                 }
+                if (isAttack)
+                {
+                    armAnim.SetTrigger("isAttack");
+                    isAttack = false;
+                }
+                if (isRunning)
+                {
+                    stamina -= Time.deltaTime * 1.25f;
+                }
+                else if (stamina < 5 && !isRunning)
+                {
+                    stamina += Time.deltaTime;
+                }
+                if (stamina <= 0)
+                {
+                    reachMinStamina = false;
+                }
+                if (!reachMinStamina)
+                {
+                    if (stamina > 3)
+                        reachMinStamina = true;
+                }
+                rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 100;
+                rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 100;
+                mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+                transform.TransformDirection(mInput);
+                controller.SimpleMove(mInput * speed);
+                transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
+                rotationY = Mathf.Clamp(rotationY, -45f, 45f);
+                fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
+                if (currentHp < maxHp)
+                {
+                    if (regenTimer > 0)
+                    {
+                        regenTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        currentHp++;
+                        regenTimer = 5.0f;
+                    }
+                }
             }
             else
             {
-                armAnim.SetBool("isRunning", false);
-                speed = 5;
-                isRunning = false;
-            }
-            if (isAttack)
-            {
-                armAnim.SetTrigger("isAttack");
-                isAttack = false;
-            }
-            if(isRunning)
-            {
-                stamina -= Time.deltaTime * 1.25f;
-            }
-            else if(stamina < 5 && !isRunning)
-            {
-                stamina += Time.deltaTime;
-            }
-            if(stamina <= 0)
-            {
-                reachMinStamina = false;
-            }
-            if(!reachMinStamina)
-            {
-                if (stamina > 3)
-                    reachMinStamina = true;
-            }
-            rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 100;
-            rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 100;
-            mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-            transform.TransformDirection(mInput);
-            controller.SimpleMove(mInput * speed);
-            transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
-            rotationY = Mathf.Clamp(rotationY, -45f, 45f);
-            fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
-            if(currentHp < maxHp)
-            {
-                if (regenTimer > 0)
+                Debug.Log("dead");
+                isDead = true;
+                if (deathAngle < 90)
                 {
-                    regenTimer -= Time.deltaTime;
+                    deathAngle += 1;
                 }
-                else
+                if (handAngle > 0)
                 {
-                    currentHp++;
-                    regenTimer = 5.0f;
+                    handAngle -= 1;
                 }
+                transform.eulerAngles = new Vector3(deathAngle, rotationX, 0.0f);
+                fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
+                handCamera.eulerAngles = new Vector3(handAngle, handCamera.eulerAngles.y, handCamera.eulerAngles.z);
             }
         }
-       else
-        {
-            Debug.Log("dead");
-            isDead = true;
-            if(deathAngle < 90)
-            {
-                deathAngle += 1;
-            }
-            if(handAngle > 0)
-            {
-                handAngle -= 1;
-            }
-            transform.eulerAngles = new Vector3(deathAngle, rotationX, 0.0f);
-            fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
-            handCamera.eulerAngles = new Vector3(handAngle, handCamera.eulerAngles.y, handCamera.eulerAngles.z);
-        }
+
         position = this.transform.position;
 
         CheckHouseDistance();

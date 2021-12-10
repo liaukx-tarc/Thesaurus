@@ -14,6 +14,7 @@ public class WorldController : MonoBehaviour
     public GameObject spawnMonster;
     public bool isMonsterSpawn;
     public GameObject canvas;
+    public GameObject blackScene;
     public GameObject bossCamera;
 
     //Explore Area
@@ -48,12 +49,18 @@ public class WorldController : MonoBehaviour
     public GameObject deadScene;
     private float deadAlpha;
 
+    //end scene
+    public GameObject[] entranceDoor;
+    static public bool startEndScene;
+    public GameObject endCamera;
+    public bool isSceneComplete;
+
     // Start is called before the first frame update
     void Start()
     {
         keyNum = 2;
         keyCollected = 0;
-        isEscapeMode = false;
+        isEscapeMode = true;
         exploreAreaClear = false;
         puzzleAreaClear = false;
         puzzleComplete = false;
@@ -62,7 +69,9 @@ public class WorldController : MonoBehaviour
         isPlayerOut = false;
         isMonsterSpawn = false;
         isWin = false;
-
+        startEndScene = false;
+        isSceneComplete = false;
+        CheckEndGame.manaballNeeded = manaBallNeeded;
         deadAlpha = 0;
     }
 
@@ -123,12 +132,38 @@ public class WorldController : MonoBehaviour
                 if (manaBallNum >= manaBallNeeded && !borderClose)
                 {
                     StartCoroutine(BorderEnable(false));
+                    for (int i = 0; i < entranceDoor.Length; i++)
+                    {
+                        entranceDoor[i].GetComponent<DoorControl>().doorOpening = true;
+                    }
+                }
+                if(isWin)
+                {
+                    if(!startEndScene)
+                    {
+                        canvas.SetActive(false);
+                        characterCamera.GetComponentInChildren<Camera>().enabled = false;
+                        endCamera.SetActive(true);
+                        startEndScene = true;
+                        StartCoroutine(StartEndScreen());
+                    }
+                    if(isSceneComplete)
+                    {
+                        blackScene.SetActive(true);
+                        if (deadAlpha < 1)
+                        {
+                            deadAlpha += Time.deltaTime * 0.5f;
+                        }
+                        deadScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, deadAlpha);
+                    }
                 }
             }
         }
        else
         {
-            if(deadAlpha < 1)
+            canvas.SetActive(false);
+            blackScene.SetActive(true);
+            if (deadAlpha < 1)
             {
                 deadAlpha += Time.deltaTime * 0.5f;
             }
@@ -164,6 +199,12 @@ public class WorldController : MonoBehaviour
         {
             door[i].GetComponent<DoorControl>().doorOpening = true;
         }
+    }
+
+    IEnumerator StartEndScreen()
+    {
+        yield return new WaitForSeconds(7.0f);
+        isSceneComplete = true;
     }
     
     IEnumerator StopCutScene(GameObject camera, float cutSceneDuration)
