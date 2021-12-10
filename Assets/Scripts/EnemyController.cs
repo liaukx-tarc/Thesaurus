@@ -48,6 +48,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (atkCD > 0)
+        {
+            atkCD -= Time.deltaTime;
+        }
         if (isStun)
         {
             anim.speed = 0;
@@ -76,10 +80,6 @@ public class EnemyController : MonoBehaviour
                 GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("Color_20489dc9a40f4e2d9c702621e1fa832d", hitColor[magicType]);
             }
 
-            if (atkCD > 0)
-            {
-                atkCD -= Time.deltaTime;
-            }
             if (GetComponentInChildren<DetectPlayer>().isIdle)
             {
                 agent.speed = 0.0f;
@@ -129,7 +129,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     isNearDoor = false;
-                    agent.speed = 4f * moveSpeed;
+                    agent.speed = 2f * moveSpeed;
                     anim.SetBool("isRunning", false);
                     anim.SetBool("isWalking", true);
                 }
@@ -174,7 +174,7 @@ public class EnemyController : MonoBehaviour
             atkDelayTime = 0.5f;
         }
         yield return new WaitForSeconds(atkDelayTime);
-        if(!isStun && GetComponentInChildren<DetectPlayer>().isNear)
+        if(!isStun && agent.remainingDistance < 2f)
         {
             PlayerController.currentHp--;
             PlayerController.regenTimer = 5.0f;

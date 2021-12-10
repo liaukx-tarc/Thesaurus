@@ -20,6 +20,7 @@ public class MagicSpell : MonoBehaviour
     public ParticleSystem[] psSpell;
     public GameObject[] psCircle;
     private ParticleSystem.MainModule main;
+    private bool magicUpgrade;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class MagicSpell : MonoBehaviour
         atkTimer = 0.0f;
         isAttackDelay = false;
         isSwitchColor = false;
+        magicUpgrade = false;
         attackDelay = 0.0f;
         alpha = 0.0f;
         intensity = 0;
@@ -81,35 +83,34 @@ public class MagicSpell : MonoBehaviour
             }
             if (Input.GetButtonDown("Switch"))
             {
-                proIndex = (proIndex + 1) % projectile.Length;
-                Debug.Log(proIndex);
-                if (proIndex == 0)
+                if(WorldController.isEscapeMode)
                 {
-                    r = 1; g = 1; b = 1;
-                }
-                else if (proIndex == 1)
-                {
-                    r = 0.38f; g = 0.83f; b = 0.87f; //97,212,221 blue
-                }
-                else
-                {
-                    r = 0.8f; g = 0.45f; b = 0.91f; //204,116,231 violet
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    main = psSpell[i].main;
-                    main.startColor = new Color(r, g, b, 1.0f);
-                }
-                this.gameObject.GetComponentInChildren<Light>().color = new Color(r, g, b, 1.0f);
-                isSwitchColor = true;
-                intensity = 0;
-                atkTimer = 3f;
+                    if (proIndex == 1)
+                    {
+                        proIndex++;
+                        r = 0.8f; g = 0.45f; b = 0.91f; //204,116,231 violet
+                    }
+                    else
+                    {
+                        proIndex--;
+                        r = 0.38f; g = 0.83f; b = 0.87f; //97,212,221 blue
+                    }
+                    for (int i = 0; i < 2; i++)
+                    {
+                        main = psSpell[i].main;
+                        main.startColor = new Color(r, g, b, 1.0f);
+                    }
+                    this.gameObject.GetComponentInChildren<Light>().color = new Color(r, g, b, 1.0f);
+                    isSwitchColor = true;
+                    intensity = 0;
+                    atkTimer = 3f;
+                }  
             }
 
             if(isSwitchColor)
             {
-                intensity += Time.deltaTime;
-                this.gameObject.GetComponentInChildren  <Light>().intensity = Mathf.Lerp(0, 6, intensity);
+                intensity += Time.deltaTime * 0.1f;
+                this.gameObject.GetComponentInChildren<Light>().intensity = Mathf.Lerp(0, 6, intensity);
                 if(intensity > 6)
                 {
                     isSwitchColor = false;
@@ -117,15 +118,32 @@ public class MagicSpell : MonoBehaviour
                 }
             }
 
-
+            if(WorldController.isEscapeMode)
+            {
+                if(!magicUpgrade)
+                {
+                    r = 0.38f; g = 0.83f; b = 0.87f;
+                    proIndex = 1;
+                    magicUpgrade = true;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        main = psSpell[i].main;
+                        main.startColor = new Color(r, g, b, 1.0f);
+                    }
+                    this.gameObject.GetComponentInChildren<Light>().color = new Color(r, g, b, 1.0f);
+                    isSwitchColor = true;
+                    intensity = 0;
+                    atkTimer = 3f;
+                }
+            }
 
             if (isAttackDelay)
             {
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0.3f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0.3f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0, 0.3f, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), transform.forward, out hit, 100, enemyLayer))
+                    || Physics.Raycast(transform.position - new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer))
                 {
                     if (hit.collider.tag == "Enemy")
                     {

@@ -59,7 +59,7 @@ public class WorldController : MonoBehaviour
     {
         keyNum = 2;
         keyCollected = 0;
-        isEscapeMode = true;
+        isEscapeMode = false;
         exploreAreaClear = false;
         puzzleAreaClear = false;
         puzzleComplete = false;

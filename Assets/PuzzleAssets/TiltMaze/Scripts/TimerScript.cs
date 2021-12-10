@@ -11,7 +11,7 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         WorldController.puzzleUnlock = false;
-        StartCoroutine(delay(3));
+        StartCoroutine(delay(4));
     }
 
 

@@ -44,13 +44,13 @@ public class DetectPlayer : MonoBehaviour
         {
             if (controller.isLastSpawn)
             {
-                chaseTime = 3000;
+                chaseTime = 3600;
                 chaseTimer = chaseTime;
                 ChaseTarget();
             }
             else
             {
-                chaseTime = 3;
+                chaseTime = 5;
             }
             if (chaseTimer > 0)
             {
@@ -106,9 +106,15 @@ public class DetectPlayer : MonoBehaviour
                     {
                         if (hit.collider.gameObject.tag == "Player")
                         {
+                            isPlayerDetected = true;
                             chaseTimer = chaseTime;
-                            if (Vector3.Distance(transform.position, target.position) < 2.5f)
+                            if (Vector3.Distance(transform.position, target.position) < 2f)
                             {
+                                agent.isStopped = true;
+                                agent.enabled = false;
+                                transform.LookAt(target);
+                                agent.enabled = true;
+                                agent.isStopped = false;
                                 isNear = true;
                             }
                             else
@@ -119,9 +125,20 @@ public class DetectPlayer : MonoBehaviour
                         }
                     }
                 }
-                else if (Vector3.Distance(transform.position, target.position) < 6f)
+                else if (Vector3.Distance(transform.position, target.position) < 2f)
+                {
+                    isNear = true;
+                    isPlayerDetected = true;
+                    agent.isStopped = true;
+                    agent.enabled = false;
+                    transform.LookAt(target);
+                    agent.enabled = true;
+                    agent.isStopped = false;
+                }
+                else if (Vector3.Distance(transform.position, target.position) > 2f && Vector3.Distance(transform.position, target.position) < 6f)
                 {
                     isNear = false;
+                    isPlayerDetected = true;
                     chaseTimer = chaseTime;
                     ChaseTarget();
                 }
@@ -131,7 +148,6 @@ public class DetectPlayer : MonoBehaviour
 
     void ChaseTarget()
     {
-        isPlayerDetected = true;
         isIdle = false;
         if(target != null)
         {
@@ -146,6 +162,7 @@ public class DetectPlayer : MonoBehaviour
     void MissTarget()
     {
         isPlayerDetected = false;
+        agent.ResetPath();
         agent.destination = this.transform.position;
         target = null;
         if (!isIdle)
