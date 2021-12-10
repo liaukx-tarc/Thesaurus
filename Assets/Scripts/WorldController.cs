@@ -29,6 +29,8 @@ public class WorldController : MonoBehaviour
     bool puzzleAreaClear;
     public GameObject[] puzzleAreaDoor;
     public GameObject puzzleAreaCamera;
+    static public bool isInPuzzle;
+    static public bool puzzleUnlock;
 
     //Border
     public GameObject borderCamera;
@@ -69,12 +71,7 @@ public class WorldController : MonoBehaviour
         if(!PlayerController.isDead)
         {
             if (!isEscapeMode)
-            {
-                if(!isMonsterSpawn && isPlayerOut)
-                {
-                    SpawnMonster();
-                    isMonsterSpawn = true;
-                }
+            {                
                 if (keyCollected == keyNum && !exploreAreaClear)
                 {
                     exploreAreaClear = true;
@@ -85,6 +82,7 @@ public class WorldController : MonoBehaviour
                 if (puzzleComplete)
                 {
                     characterCamera.SetActive(true);
+                    canvas.SetActive(true);
                     puzzleComplete = false;
 
                     if (puzzleSloved == puzzleNum && !puzzleAreaClear)
@@ -98,7 +96,7 @@ public class WorldController : MonoBehaviour
 
             else
             {
-                if(borderOpening)
+                if (borderOpening)
                 {
                     StartCoroutine(BorderEnable(true));
 
@@ -115,6 +113,12 @@ public class WorldController : MonoBehaviour
                     }
                 }
 
+                else if (!isMonsterSpawn && isPlayerOut)
+                {
+                    SpawnMonster();
+                    isMonsterSpawn = true;
+                }
+
                 if (manaBallNum >= manaBallNeeded && !borderClose)
                 {
                     StartCoroutine(BorderEnable(false));
@@ -128,6 +132,24 @@ public class WorldController : MonoBehaviour
                 deadAlpha += Time.deltaTime * 0.5f;
             }
             deadScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, deadAlpha);
+        }
+
+        if(Input.GetButtonDown("Escape"))
+        {
+            if(!isInPuzzle)
+            {
+                //puase game
+            }
+
+            else
+            {
+                if(puzzleUnlock)
+                {
+                    isInPuzzle = false;
+                    characterCamera.SetActive(true);
+                    canvas.SetActive(true);
+                }
+            }
         }
     }
 

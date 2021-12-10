@@ -10,15 +10,17 @@ public class Ball : MonoBehaviour
     public GameObject Confetti;
     public GameObject Sphere;
     TimerScript timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
+        if(Input.GetButtonDown("Escape"))
+        {
+            if (WorldController.puzzleUnlock)
+                puzzleObj.SetActive(false);
+        }
     }
 
     public IEnumerator OnTriggerEnter(Collider gameObject)
@@ -49,7 +51,6 @@ public class Ball : MonoBehaviour
         Material[] materials = new Material[1];
         materials[0] = crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials[0];
         crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials = materials;
-
         WorldController.puzzleSloved++;
         WorldController.puzzleComplete = true;
         puzzleObj.SetActive(false);

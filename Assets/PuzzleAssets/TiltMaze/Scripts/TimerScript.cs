@@ -10,19 +10,20 @@ public class TimerScript : MonoBehaviour
     public int seconds, minutes;
     void Start()
     {
+        WorldController.puzzleUnlock = false;
         StartCoroutine(delay(3));
-       
     }
-   
- 
- IEnumerator delay(int secs)
+
+
+    public IEnumerator delay(int secs)
     {
-        
         yield return new WaitForSeconds(secs);
         instruction.gameObject.SetActive(false);
+        WorldController.puzzleUnlock = true;
         AddToSecond();
     }
-    private void AddToSecond()
+
+    public void AddToSecond()
     {
         seconds++;
         if (seconds > 59)

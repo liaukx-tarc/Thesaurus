@@ -63,6 +63,12 @@ public class PuzzleDisplay : MonoBehaviour
 
 		// set the scale of the entire puzzle object as set in the inspector.
 		this.transform.localScale = PuzzleScale;
+
+		if (Input.GetButtonDown("Escape"))
+		{
+			if (WorldController.puzzleUnlock)
+				puzzleObj.SetActive(false);
+		}
 	}
 
 	public Vector3 GetTargetLocation(PuzzleTile thisTile)
@@ -262,6 +268,7 @@ public class PuzzleDisplay : MonoBehaviour
 		materials[0] = crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials[0];
 		crystal.transform.GetChild(1).GetComponent<MeshRenderer>().materials = materials;
 
+		Cursor.lockState = CursorLockMode.Locked;
 		WorldController.puzzleSloved++;
 		WorldController.puzzleComplete = true;
 		puzzleObj.SetActive(false);

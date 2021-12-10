@@ -140,6 +140,15 @@ public class GameController : MonoBehaviour {
     }
 
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Escape"))
+        {
+            if (WorldController.puzzleUnlock)
+                puzzleObj.SetActive(false);
+        }
+    }
+
     //intantiate blocks
     public  void SetPuzzle(Board b)
     {
@@ -381,6 +390,7 @@ public class GameController : MonoBehaviour {
 
         WorldController.puzzleSloved++;
         WorldController.puzzleComplete = true;
+        Cursor.lockState = CursorLockMode.Locked;
         puzzleObj.SetActive(false);
     }
 
