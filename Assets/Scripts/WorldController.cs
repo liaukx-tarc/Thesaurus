@@ -13,7 +13,7 @@ public class WorldController : MonoBehaviour
     public GameObject boss;
     public GameObject spawnMonster;
     public bool isMonsterSpawn;
-    public GameObject canvas;
+    public GameObject uiCanvas;
     public GameObject blackScene;
     public GameObject bossCamera;
 
@@ -88,19 +88,19 @@ public class WorldController : MonoBehaviour
                 if (keyCollected == keyNum && !exploreAreaClear)
                 {
                     exploreAreaClear = true;
-                    canvas.SetActive(false);
+                    uiCanvas.SetActive(false);
                     OpenDoor(exploreAreaDoor, exploreAreaCamera);
                 }
 
                 if (puzzleComplete)
                 {
                     characterCamera.SetActive(true);
-                    canvas.SetActive(true);
+                    uiCanvas.SetActive(true);
                     puzzleComplete = false;
 
                     if (puzzleSloved == puzzleNum && !puzzleAreaClear)
                     {
-                        canvas.SetActive(false);
+                        uiCanvas.SetActive(false);
                         puzzleAreaClear = true;
                         OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
                     }
@@ -146,7 +146,7 @@ public class WorldController : MonoBehaviour
                 {
                     if(!startEndScene)
                     {
-                        canvas.SetActive(false);
+                        uiCanvas.SetActive(false);
                         characterCamera.GetComponentInChildren<Camera>().enabled = false;
                         endCamera.SetActive(true);
                         startEndScene = true;
@@ -167,7 +167,7 @@ public class WorldController : MonoBehaviour
         }
        else
         {
-            canvas.SetActive(false);
+            uiCanvas.SetActive(false);
             blackScene.SetActive(true);
             if (deadAlpha < 1)
             {
@@ -180,7 +180,7 @@ public class WorldController : MonoBehaviour
         {
             if(!isInPuzzle)
             {
-                //puase game
+                uiCanvas.SetActive(false);
             }
 
             else
@@ -189,7 +189,7 @@ public class WorldController : MonoBehaviour
                 {
                     isInPuzzle = false;
                     characterCamera.SetActive(true);
-                    canvas.SetActive(true);
+                    uiCanvas.SetActive(true);
                 }
             }
         }
@@ -217,7 +217,7 @@ public class WorldController : MonoBehaviour
     {
         yield return new WaitForSeconds(cutSceneDuration);
         camera.SetActive(false);
-        canvas.SetActive(true);
+        uiCanvas.SetActive(true);
         characterCamera.SetActive(true);
     }
 
@@ -225,7 +225,7 @@ public class WorldController : MonoBehaviour
     {
         cityBorder.SetActive(true);
         //Start Border Cut Scene
-        canvas.SetActive(false);
+        uiCanvas.SetActive(false);
         characterCamera.SetActive(false);
         borderCamera.SetActive(true);
         borderOpening = true;
