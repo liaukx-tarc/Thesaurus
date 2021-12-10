@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool isRunning;
     public bool reachMinStamina;
     static public bool isInsideHouse;
+    public GameObject blood;
 
     private Vector3 mInput;
     public CharacterController controller;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] houseInterior;
 
     private bool startRun;
-    public GameObject light;
+    public GameObject magicLight;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         reachMinStamina = true;
         isInsideHouse = false;
         startRun = false;
+        rotationX = transform.eulerAngles.y;
 
         //Check House
         isNearHouse = new bool[housePosition.Length];
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(isInsideHouse);
+        Debug.Log(WorldController.startEndScene);
         if(WorldController.startEndScene)
         {
             if(!startRun)
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 startRun = true;
                 modelAnim.SetBool("isRunning", true);
-                light.SetActive(false);
+                magicLight.SetActive(false);
             }
             else
             {
@@ -95,6 +97,9 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
                     armAnim.SetBool("isWalking", true);
+                    mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+                    transform.TransformDirection(mInput);
+                    controller.SimpleMove(mInput * speed);
                 }
                 else
                 {
@@ -143,19 +148,20 @@ public class PlayerController : MonoBehaviour
                     if (stamina > 3)
                         reachMinStamina = true;
                 }
-                rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 100;
-                rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 100;
-                mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-                transform.TransformDirection(mInput);
-                controller.SimpleMove(mInput * speed);
-                transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
-                rotationY = Mathf.Clamp(rotationY, -45f, 45f);
-                fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
+                if(Input.GetAxisRaw("Mouse X") != 0 || Input.GetAxisRaw("Mouse Y") != 0)
+                {
+                    rotationX += Input.GetAxisRaw("Mouse X") * Time.deltaTime * 100;
+                    rotationY -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * 100;
+                    transform.eulerAngles = new Vector3(0.0f, rotationX, 0.0f);
+                    rotationY = Mathf.Clamp(rotationY, -45f, 45f);
+                    fpCamera.eulerAngles = new Vector3(rotationY, fpCamera.eulerAngles.y, fpCamera.eulerAngles.z);
+                }
                 if (currentHp < maxHp)
                 {
                     if (regenTimer > 0)
                     {
                         regenTimer -= Time.deltaTime;
+                        blood.GetComponent<UnityEngine.UI.RawImage>().color = new Color(155 / 255.0f, 0, 0, Mathf.Lerp(0, 1.0f,(regenTimer / 5)));
                     }
                     else
                     {
@@ -167,8 +173,9 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Debug.Log("dead");
+                blood.GetComponent<UnityEngine.UI.RawImage>().color = new Color(155 / 255.0f, 0, 0, 1.0f);
                 isDead = true;
-                if (deathAngle < 90)
+                if (deathAngle < 80)
                 {
                     deathAngle += 1;
                 }
