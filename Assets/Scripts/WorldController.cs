@@ -14,7 +14,6 @@ public class WorldController : MonoBehaviour
     public GameObject spawnMonster;
     public bool isMonsterSpawn;
     public GameObject uiCanvas;
-    public GameObject blackScene;
     public GameObject bossCamera;
 
     //Explore Area
@@ -46,8 +45,8 @@ public class WorldController : MonoBehaviour
     public GameObject manaBallCamera;
 
     //dead scene
-    public GameObject deadScene;
-    private float deadAlpha;
+    public GameObject blackScene;
+    private float blackAlpha;
 
     //end scene
     public GameObject[] entranceDoor;
@@ -75,7 +74,7 @@ public class WorldController : MonoBehaviour
         CheckEndGame.manaballNeeded = manaBallNeeded;
         ManaBallCollect.manaBallNeeded = manaBallNeeded;
 
-        deadAlpha = 0;
+        blackAlpha = 0;
     }
 
     // Update is called once per frame
@@ -156,11 +155,11 @@ public class WorldController : MonoBehaviour
                     if(isSceneComplete)
                     {
                         blackScene.SetActive(true);
-                        if (deadAlpha < 1)
+                        if (blackAlpha < 1)
                         {
-                            deadAlpha += Time.deltaTime * 0.5f;
+                            blackAlpha += Time.deltaTime * 0.5f;
                         }
-                        deadScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, deadAlpha);
+                        blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
                     }
                 }
             }
@@ -169,11 +168,11 @@ public class WorldController : MonoBehaviour
         {
             uiCanvas.SetActive(false);
             blackScene.SetActive(true);
-            if (deadAlpha < 1)
+            if (blackAlpha < 1)
             {
-                deadAlpha += Time.deltaTime * 0.5f;
+                blackAlpha += Time.deltaTime * 0.5f;
             }
-            deadScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, deadAlpha);
+            blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
         }
 
         if(Input.GetButtonDown("Escape"))
