@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CheckPlayerRun : MonoBehaviour
 {
+    public GameObject manaBar;
+
     private void OnTriggerEnter(Collider other)
     {
         if(WorldController.isEscapeMode)
@@ -12,6 +14,7 @@ public class CheckPlayerRun : MonoBehaviour
             {
                 WorldController.isPlayerOut = true;
                 DoorControl.isLock = true;
+                manaBar.SetActive(true);
             }
         }
     }
