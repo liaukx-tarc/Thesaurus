@@ -20,6 +20,7 @@ public class ActivePuzzle : MonoBehaviour
             effect.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, 1);
             scale += Time.deltaTime * 150;
         }
+
         else if(scale >= 125)
         {
             effect.SetActive(false);
@@ -30,8 +31,8 @@ public class ActivePuzzle : MonoBehaviour
             Cursor.visible = true;
             characterCamera.SetActive(!boolPuzzle);
             canvas.SetActive(!boolPuzzle);
-        }
 
+        }
     }
 
     public void PuzzleControl(bool state)
