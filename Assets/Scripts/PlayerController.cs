@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(WorldController.startEndScene);
         if(WorldController.startEndScene)
         {
             if(!startRun)
@@ -83,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 startRun = true;
                 modelAnim.SetBool("isRunning", true);
-                magicLight.SetActive(false);
+                magicLight.GetComponent<Light>().intensity = 0;
             }
             else
             {
