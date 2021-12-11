@@ -68,7 +68,6 @@ public class WorldController : MonoBehaviour
     //Win Menu
     public GameObject winMenu;
     public GameObject winText;
-    public GameObject congratulationsText;
     public GameObject winButton;
     bool isWinText;
     float textAlpha;
@@ -87,7 +86,7 @@ public class WorldController : MonoBehaviour
         platformPuzzleNum = 0;
 
         puzzleSloved = 0;
-        isEscapeMode = false;
+        isEscapeMode = true;
 
         exploreAreaClear = false;
         puzzleAreaClear = false;
@@ -202,32 +201,18 @@ public class WorldController : MonoBehaviour
                         {
                             blackAlpha += Time.deltaTime * 0.5f;
                         }
-
                         else
                         {
-                            if (!isWinText)
+                            if (textAlpha < 1)
                             {
-                                if (textAlpha < 1)
-                                    textAlpha += Time.deltaTime * 0.5f;
-                                else
-                                {
-                                    congratulationsText.SetActive(false);
-                                    winText.SetActive(true);
-                                    isWinText = true;
-                                    textAlpha = 0;
-                                }
-                                congratulationsText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, textAlpha);
+                                textAlpha += Time.deltaTime * 0.5f;
                             }
-
                             else
                             {
-                                if (textAlpha < 1)
-                                    textAlpha += Time.deltaTime * 0.5f;
-                                else
-                                    winButton.SetActive(true);
-                                winText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, textAlpha);
+                                winButton.SetActive(true);
                             }
                         }
+                        winText.GetComponent<TextMeshProUGUI>().color = new Color(172 / 255.0f, 200 / 255.0f, 1, textAlpha);
                         blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
                         winMenu.SetActive(true);
                         Cursor.lockState = CursorLockMode.None;
