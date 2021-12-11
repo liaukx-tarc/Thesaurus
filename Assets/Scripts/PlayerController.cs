@@ -96,14 +96,14 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
                     armAnim.SetBool("isWalking", true);
-                    mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-                    transform.TransformDirection(mInput);
-                    controller.SimpleMove(mInput * speed);
                 }
                 else
                 {
                     armAnim.SetBool("isWalking", false);
                 }
+                mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+                transform.TransformDirection(mInput);
+                controller.SimpleMove(mInput * speed);
                 if (Input.GetButton("Run"))
                 {
                     if (stamina > 0 && reachMinStamina)
