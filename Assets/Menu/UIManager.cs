@@ -9,8 +9,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public AudioClip buttonHit;
+    public AudioClip narration;
     public GameObject instruction;
     public GameObject mainMenu;
+    public GameObject story;
+    public GameObject credit;
     public GameObject buttonInstruction;
     public GameObject playInstruction;
     public GameObject nextBtn;
@@ -23,7 +26,22 @@ public class UIManager : MonoBehaviour
         audio.Play();
     }
 
+    void playNarration()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Stop();
+        audio.clip = narration;
+        audio.Play();
+    }
+
     public void PlayButtonClicked()
+    {
+        playBtnSound();
+        story.SetActive(true);
+        playNarration();
+    }
+
+    public void ContinueButtonClicked()
     {
         playBtnSound();
         SceneManager.LoadScene(1);
@@ -33,6 +51,18 @@ public class UIManager : MonoBehaviour
     {
         playBtnSound();
         instruction.SetActive(true);
+    }
+
+    public void CreditButtonClicked()
+    {
+        playBtnSound();
+        credit.SetActive(true);
+    }
+
+    public void CreditBackButtonClicked()
+    {
+        playBtnSound();
+        credit.SetActive(false);
     }
 
     public void QuitButtonClicked()
@@ -48,6 +78,7 @@ public class UIManager : MonoBehaviour
 
     public void NextButtonClicked()
     {
+        playBtnSound();
         buttonInstruction.SetActive(false);
         playInstruction.SetActive(true);
         nextBtn.SetActive(false);
@@ -56,6 +87,7 @@ public class UIManager : MonoBehaviour
 
     public void PreviousButtonClicked()
     {
+        playBtnSound();
         playInstruction.SetActive(false);
         buttonInstruction.SetActive(true);
         previousBtn.SetActive(false);
