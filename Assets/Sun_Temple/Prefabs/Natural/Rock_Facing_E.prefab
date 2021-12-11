@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4023629616129404}
   - component: {fileID: 33783297464406942}
   - component: {fileID: 23385055529498908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4883435901507180}
   - component: {fileID: 33283305327955838}
   - component: {fileID: 23111018661528308}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 4092799606234890}
   - component: {fileID: 33121615476587926}
   - component: {fileID: 23330068292002514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 4958922547979932}
   - component: {fileID: 33738191058446436}
   - component: {fileID: 23473109199274752}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 33546806017091212}
   - component: {fileID: 23510686330747526}
   - component: {fileID: 537007012266075552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rock_Facing_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 4087032222097224}
   - component: {fileID: 33657584021650248}
   - component: {fileID: 23785634111977908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 4546531011449918}
   - component: {fileID: 33216372288756608}
   - component: {fileID: 23249841549290828}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 4120595627325202}
   - component: {fileID: 33093133919273644}
   - component: {fileID: 23412801725401900}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 4695018661039980}
   - component: {fileID: 33070618173442580}
   - component: {fileID: 23961323770266210}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_E (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

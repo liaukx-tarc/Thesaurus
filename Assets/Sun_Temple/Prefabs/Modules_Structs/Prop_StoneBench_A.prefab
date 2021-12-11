@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8776916812636978218}
   - component: {fileID: 8776916812637945578}
   - component: {fileID: -2093636141898585399}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Prop_StoneBench_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

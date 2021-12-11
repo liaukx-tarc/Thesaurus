@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6635144079163565232}
   - component: {fileID: 7681070494476214054}
   - component: {fileID: 6318824258576639565}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3784674996571807566}
   - component: {fileID: 8691230679359820033}
   - component: {fileID: 2470638743498006192}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Roof (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4656408238183518357}
   - component: {fileID: 1300157462365295267}
   - component: {fileID: 7486909122050873724}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 7258157242904871119}
   - component: {fileID: 7258157242904871118}
   - component: {fileID: 7258157242904871105}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 7258157244025729656}
   - component: {fileID: 7258157244025729659}
   - component: {fileID: 7258157244025729658}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 7258157244267477522}
   - component: {fileID: 7258157244267477525}
   - component: {fileID: 7258157244267477524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 6097668727428242449}
   - component: {fileID: 8321440653348088027}
   - component: {fileID: 7834374705553146809}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_TempleWall_Mid_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 6164112435089752714}
   - component: {fileID: 5355020067846679547}
   - component: {fileID: 2490035790418208530}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 4915964537455138873}
   - component: {fileID: 7701433272339018687}
   - component: {fileID: 6272555454354600635}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,6 +893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bld_LongTriangular_Floor_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5023cd28884cb154c8d8e8221b39aab1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5023cd28884cb154c8d8e8221b39aab1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -985,6 +989,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5023cd28884cb154c8d8e8221b39aab1, type: 3}
       propertyPath: m_Name
       value: Bld_LongTriangular_Floor_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5023cd28884cb154c8d8e8221b39aab1, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5023cd28884cb154c8d8e8221b39aab1, type: 3}
       propertyPath: m_RootOrder

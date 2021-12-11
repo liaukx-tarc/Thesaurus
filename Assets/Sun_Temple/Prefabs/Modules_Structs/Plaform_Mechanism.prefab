@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 370209408099928349}
   - component: {fileID: 370209408099928350}
   - component: {fileID: 370209408099928351}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plaform_Mechanism
   m_TagString: Untagged
   m_Icon: {fileID: 0}

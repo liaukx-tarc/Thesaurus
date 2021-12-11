@@ -67,6 +67,16 @@ public class PlatformButton : MonoBehaviour
         {
             light.GetComponent<Renderer>().material.color = new Color(0.79f, 0.06f, 0.19f);
             PlayerController.currentHp--;
+            
+            if(PlayerController.currentHp <= 0)
+            {
+                AudioManager.playDeath = true;
+            }
+
+            else
+            {
+                AudioManager.playHurt = true;
+            }
         }
             
             
