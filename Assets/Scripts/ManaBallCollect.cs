@@ -32,7 +32,7 @@ public class ManaBallCollect : MonoBehaviour
                     + ((float)546 / manaBallNeeded), 546),
                     manabar.rectTransform.sizeDelta.y);
             }
-            AudioManager.playManaBallCollectSound = true;
+            
         }
     }
 }

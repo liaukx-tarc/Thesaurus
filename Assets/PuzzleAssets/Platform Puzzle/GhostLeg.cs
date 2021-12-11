@@ -213,11 +213,6 @@ public class GhostLeg : MonoBehaviour
 
             newButton.GetComponentInChildren<TextMeshPro>().text = RomanNum(i + 1);
             newButton.GetComponent<PlatformButton>().buttonNum = i;
-            
-            AudioSource[] platform = new AudioSource[2];
-            platform[0] = controlPlatformLeft.GetComponent<AudioSource>();
-            platform[1] = controlPlatformRight.GetComponent<AudioSource>();
-            newButton.GetComponent<PlatformButton>().platformAudioSource = platform;
         }
         
     }
