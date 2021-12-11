@@ -15,6 +15,9 @@ public class PlatformButton : MonoBehaviour
     GhostLeg ghostLeg;
     GameObject light;
 
+    public AudioSource audioSource;
+    public AudioSource[] platformAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,8 @@ public class PlatformButton : MonoBehaviour
     {
         if (isHit && !isActive)
         {
+            audioSource.Play();
+
             StartCoroutine(ShowAns(waitingTime));
 
             isHit = false;
@@ -49,6 +54,11 @@ public class PlatformButton : MonoBehaviour
         yield return new WaitForSeconds(waitingTime / 9 * GetComponentInParent<GhostLeg>().row);
         if (buttonNum == ghostLeg.ansNum)
         {
+            for (int i = 0; i < platformAudioSource.Length; i++)
+            {
+                platformAudioSource[i].Play();
+            }
+
             ghostLeg.isActivate = true;
             light.GetComponent<Renderer>().material.color = new Color(0.45f, 1.0f, 0.15f);
             WorldController.platformPuzzleNum++;
