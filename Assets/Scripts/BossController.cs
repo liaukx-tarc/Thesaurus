@@ -18,6 +18,14 @@ public class BossController : MonoBehaviour
     private bool isStart;
     private Vector3 endPosition;
     private bool endRoar;
+
+    public AudioSource bossSound;
+    public AudioSource attackSound;
+    public AudioClip roar;
+    public AudioClip attack;
+    public AudioClip run;
+    bool isPlayRunSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +41,7 @@ public class BossController : MonoBehaviour
         isStart = false;
         endPosition = new Vector3(9.60f, 10.0f, 35f);
         endRoar = false;
+        isPlayRunSound = false;
     }
 
     // Update is called once per frame
@@ -43,6 +52,8 @@ public class BossController : MonoBehaviour
             anim.SetBool("isRunning", false);
             if (!isRoar)
             {
+                bossSound.clip = roar;
+                bossSound.Play();
                 agent.speed = 0.0f;
                 anim.SetTrigger("isRoar");
                 StartCoroutine(RoarEnd());
@@ -83,6 +94,14 @@ public class BossController : MonoBehaviour
                 agent.destination = PlayerController.position;
                 if (!isAtk)
                 {
+                    if(!isPlayRunSound)
+                    {
+                        bossSound.Stop();
+                        bossSound.clip = run;
+                        bossSound.Play();
+                        isPlayRunSound = true;
+                    }
+                    
                     if (agent.remainingDistance > 10f)
                     {
                         agent.speed = 15.0f;
@@ -101,15 +120,22 @@ public class BossController : MonoBehaviour
                 }
                 if (agent.remainingDistance < 4f && agent.remainingDistance > 0.1f)
                 {
+                    bossSound.Stop();
+                    isPlayRunSound = true;
                     agent.speed = 0;
                     anim.SetBool("isRunning", false);
                     if (atkCD <= 0)
                     {
-                        anim.SetTrigger("isAttack");
-                        atkCD = 3;
-                        StartCoroutine(AtkDelay());
-                        isAtk = true;
-                        StartCoroutine(AtkIdle());
+                        if (!PlayerController.isDead)
+                        {
+                            attackSound.clip = attack;
+                            attackSound.Play();
+                            anim.SetTrigger("isAttack");
+                            atkCD = 3;
+                            StartCoroutine(AtkDelay());
+                            isAtk = true;
+                            StartCoroutine(AtkIdle());
+                        }
                     }
                 }
             }  
@@ -119,8 +145,9 @@ public class BossController : MonoBehaviour
     IEnumerator AtkDelay()
     {
         yield return new WaitForSeconds(1f);
-        if(agent.remainingDistance < 5f)
+        if (agent.remainingDistance < 5f)
         {
+            AudioManager.playDeath = true;
             PlayerController.currentHp = 0;
         }
     }
@@ -135,69 +162,4 @@ public class BossController : MonoBehaviour
         roarComplete = true;
         isRoar = false;
     }
-    //    if(isHit)
-    //    {
-    //        anim.speed = 0;
-    //        agent.speed = 0.0f;
-    //        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 1f);
-    //        if(!isStun)
-    //        {
-    //            StartCoroutine(Stun());
-    //            isStun = true;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (atkCD > 0)
-    //        {
-    //            atkCD -= Time.deltaTime;
-    //        }
-    //        if (GetComponentInChildren<DetectPlayer>().isIdle)
-    //        {
-    //            agent.speed = 0.0f;
-    //            anim.SetBool("isRunning", false);
-    //            anim.SetBool("isWalking", false);
-    //        }
-    //        else
-    //        {
-    //            if (GetComponentInChildren<DetectPlayer>().isPlayerDetected)
-    //            {
-    //                if (GetComponentInChildren<DetectPlayer>().isNear)
-    //                {
-    //                    agent.speed = 0.0f;
-    //                    anim.SetBool("isRunning", false);
-    //                    anim.SetBool("isWalking", false);
-    //                    if (atkCD <= 0)
-    //                    {
-    //                        anim.SetTrigger("isAttack");
-    //                        atkCD = 2;
-    //                        PlayerController.currentHp--;
-    //                        PlayerController.regenTimer = 5.0f;
-    //                    }
-    //                }
-    //                else
-    //                {
-    //                    agent.speed = 4.0f;
-    //                    anim.SetBool("isRunning", true);
-    //                }
-    //            }
-    //            else
-    //            {
-    //                agent.speed = 1.5f;
-    //                anim.SetBool("isRunning", false);
-    //                anim.SetBool("isWalking", true);
-    //            }
-    //        }
-    //    }
-    //}
-
-    //IEnumerator Stun()
-    //{
-    //    yield return new WaitForSeconds(2.0f);
-    //    anim.speed = 1;
-    //    GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("Vector1_99b657cddeea437c997f08ebee7e2c31", 0);
-    //    isHit = false;
-    //    isStun = false;
-    //    stunFinish = true;
-    //}
 }

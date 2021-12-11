@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
     private bool startRun;
     public GameObject magicLight;
 
+    public AudioSource walkSound;
+    public AudioClip walk;
+    public AudioClip run;
+    bool isWalkSoundPlay;
+    bool isRunSoundPlay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +67,7 @@ public class PlayerController : MonoBehaviour
         isInsideHouse = false;
         startRun = false;
         rotationX = transform.eulerAngles.y;
+        isWalkSoundPlay = false;
 
         //Check House
         isNearHouse = new bool[housePosition.Length];
@@ -95,25 +102,48 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
                 {
+                    if(!isWalkSoundPlay)
+                    {
+                        walkSound.clip = walk;
+                        walkSound.Play();
+                        isWalkSoundPlay = true;
+                    }
                     armAnim.SetBool("isWalking", true);
                 }
                 else
                 {
+                    walkSound.Stop();
+                    isWalkSoundPlay = false;
                     armAnim.SetBool("isWalking", false);
                 }
                 mInput = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
                 transform.TransformDirection(mInput);
                 controller.SimpleMove(mInput * speed);
+
                 if (Input.GetButton("Run"))
                 {
                     if (stamina > 0 && reachMinStamina)
                     {
+                        if(!isRunSoundPlay && isWalkSoundPlay)
+                        {
+                            walkSound.Stop();
+                            walkSound.clip = run;
+                            walkSound.Play();
+                            isRunSoundPlay = true;
+                        }
                         armAnim.SetBool("isRunning", true);
                         speed = 8;
                         isRunning = true;
                     }
                     else
                     {
+                        if(isRunSoundPlay)
+                        {
+                            walkSound.Stop();
+                            isWalkSoundPlay = false;
+                            isRunSoundPlay = false;
+                        }
+                        
                         armAnim.SetBool("isRunning", false);
                         speed = 5;
                         isRunning = false;
@@ -121,10 +151,18 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    if (isRunSoundPlay)
+                    {
+                        walkSound.Stop();
+                        isWalkSoundPlay = false;
+                        isRunSoundPlay = false;
+                    }
+
                     armAnim.SetBool("isRunning", false);
                     speed = 5;
                     isRunning = false;
                 }
+
                 if (isAttack)
                 {
                     armAnim.SetTrigger("isAttack");
@@ -140,6 +178,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (stamina <= 0)
                 {
+                    AudioManager.playPant = true;
                     reachMinStamina = false;
                 }
                 if (!reachMinStamina)
@@ -171,7 +210,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("dead");
+                walkSound.Stop();
                 blood.GetComponent<UnityEngine.UI.RawImage>().color = new Color(155 / 255.0f, 0, 0, 1.0f);
                 isDead = true;
                 if (deathAngle < 80)

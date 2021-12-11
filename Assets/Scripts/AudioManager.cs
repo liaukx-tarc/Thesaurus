@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource worldSound;
+    public AudioSource playerSound;
 
     //Sound Clip
     public AudioClip keyCollectSound;
@@ -15,6 +16,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip manaBallCollectSound;
     public AudioClip puzzleActiveSound;
 
+    //Player
+    public AudioClip hurt;
+    public AudioClip death;
+    public AudioClip pant;
+    public AudioClip changeSpell;
+
+
     //Static bool
     static public bool playKeyCollectSound;
     static public bool playDoorOpenSound;
@@ -23,6 +31,12 @@ public class AudioManager : MonoBehaviour
     static public bool playManaBallSpawnSound;
     static public bool playManaBallCollectSound;
     static public bool playPuzzleActiveSound;
+
+    //Player
+    static public bool playHurt;
+    static public bool playDeath;
+    static public bool playPant;
+    static public bool playChangeSpell;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +50,11 @@ public class AudioManager : MonoBehaviour
         playManaBallSpawnSound = false;
         playManaBallCollectSound = false;
         playPuzzleActiveSound = false;
+
+        playHurt = false;
+        playDeath = false;
+        playPant = false;
+        playChangeSpell = false;
     }
 
     // Update is called once per frame
@@ -95,6 +114,39 @@ public class AudioManager : MonoBehaviour
             worldSound.clip = manaBallCollectSound;
             worldSound.Play();
             playManaBallCollectSound = false;
+        }
+
+        //player Sound
+        if(playPant)
+        {
+            playerSound.Stop();
+            playerSound.clip = pant;
+            playerSound.Play();
+            playPant = false;
+        }
+
+        else if (playHurt)
+        {
+            playerSound.Stop();
+            playerSound.clip = hurt;
+            playerSound.Play();
+            playHurt = false;
+        }
+
+        else if(playDeath)
+        {
+            playerSound.Stop();
+            playerSound.clip = death;
+            playerSound.Play();
+            playDeath = false;
+        }
+
+        else if(playChangeSpell)
+        {
+            playerSound.Stop();
+            playerSound.clip = changeSpell;
+            playerSound.Play();
+            playChangeSpell = false;
         }
     }
 }
