@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         maxHp = 2;
         currentHp = maxHp;
-        regenTimer = 0;
+        regenTimer = 5.0f;
         rotationX = 0;
         rotationY = 0;
         fpCamera = this.gameObject.transform.GetChild(2).transform;
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (stamina < 5 && !isRunning)
                 {
-                    stamina += Time.deltaTime;
+                    stamina += Time.deltaTime * 2.0f;
                 }
                 if (stamina <= 0)
                 {

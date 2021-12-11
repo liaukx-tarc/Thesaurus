@@ -64,7 +64,7 @@ public class DetectPlayer : MonoBehaviour
                 }
                 else
                 {
-                    if (!agent.pathPending && agent.remainingDistance < 1.5f)
+                    if (!agent.pathPending && agent.remainingDistance < 2.1f)
                     {
                         if(patrolPoint.Length != 0)
                         {
@@ -79,12 +79,14 @@ public class DetectPlayer : MonoBehaviour
             if(controller.isStunFinish)
             {
                 chaseTimer = chaseTime;
+                isPlayerDetected = true;
                 ChaseTarget();
                 controller.isStunFinish = false;
             }
             if(controller.isSlow)
             {
                 chaseTimer = chaseTime;
+                isPlayerDetected = true;
                 ChaseTarget();
             }
         }

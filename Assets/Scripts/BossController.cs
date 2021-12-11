@@ -85,7 +85,7 @@ public class BossController : MonoBehaviour
                 {
                     if (agent.remainingDistance > 10f)
                     {
-                        agent.speed = 10.0f;
+                        agent.speed = 15.0f;
 
                     }
                     else
@@ -101,7 +101,7 @@ public class BossController : MonoBehaviour
                 }
                 if (agent.remainingDistance < 4f && agent.remainingDistance > 0.1f)
                 {
-                    agent.speed = 0.0f;
+                    agent.speed = 0;
                     anim.SetBool("isRunning", false);
                     if (atkCD <= 0)
                     {

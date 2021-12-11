@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (GetComponentInChildren<DetectPlayer>().isPlayerDetected)
                 {
-                    if (GetComponentInChildren<DetectPlayer>().isNear)
+                    if (GetComponentInChildren<DetectPlayer>().isNear && !PlayerController.isInsideHouse)
                     {
                         agent.speed = 0.0f;
                         anim.SetBool("isRunning", false);
@@ -177,7 +177,6 @@ public class EnemyController : MonoBehaviour
         if(!isStun && agent.remainingDistance < 2f)
         {
             PlayerController.currentHp--;
-            PlayerController.regenTimer = 5.0f;
         }
     }
 }
