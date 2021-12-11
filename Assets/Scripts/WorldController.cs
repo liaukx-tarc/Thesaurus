@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +45,9 @@ public class WorldController : MonoBehaviour
     public GameObject manaBallCollection;
     public GameObject manaBallCamera;
 
+    //mana bar
+    public GameObject manaBar;
+
     //dead scene
     public GameObject blackScene;
     private float blackAlpha;
@@ -54,6 +58,13 @@ public class WorldController : MonoBehaviour
     static public bool startEndScene;
     public GameObject endCamera;
     public bool isSceneComplete;
+
+    //Win Menu
+    public GameObject winMenu;
+    public GameObject winText;
+    public GameObject congratulationsText;
+    bool isWinText;
+    float textAlpha;
 
     //Pause Menu
     public GameObject pauseMenu;
@@ -67,7 +78,7 @@ public class WorldController : MonoBehaviour
         keyCollected = 0;
 
         puzzleSloved = 0;
-        isEscapeMode = false;
+        isEscapeMode = true;
 
         exploreAreaClear = false;
         puzzleAreaClear = false;
@@ -81,22 +92,25 @@ public class WorldController : MonoBehaviour
         isSceneComplete = false;
         isInPuzzle = false;
         puzzleUnlock = false;
+        isWinText = false;
 
         CheckEndGame.manaballNeeded = manaBallNeeded;
         ManaBallCollect.manaBallNeeded = manaBallNeeded;
 
         blackAlpha = 0;
-
+        textAlpha = 0;
         manaBallNum = 0;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!PlayerController.isDead)
+        if (!PlayerController.isDead)
         {
             if (!isEscapeMode)
-            {                
+            {
                 if (keyCollected == keyNum && !exploreAreaClear)
                 {
                     exploreAreaClear = true;
@@ -155,9 +169,9 @@ public class WorldController : MonoBehaviour
                     borderClose = true;
                 }
 
-                if(isWin)
+                if (isWin)
                 {
-                    if(!startEndScene)
+                    if (!startEndScene)
                     {
                         uiCanvas.SetActive(false);
                         characterCamera.GetComponentInChildren<Camera>().enabled = false;
@@ -166,62 +180,93 @@ public class WorldController : MonoBehaviour
                         StartCoroutine(StartEndScreen());
                     }
 
-                    if(isSceneComplete)
+                    if (isSceneComplete)
                     {
                         blackScene.SetActive(true);
                         if (blackAlpha < 1)
                         {
                             blackAlpha += Time.deltaTime * 0.5f;
                         }
+
+                        else
+                        {
+                            if (!isWinText)
+                            {
+                                if (textAlpha < 1)
+                                    textAlpha += Time.deltaTime * 0.5f;
+                                else
+                                {
+                                    congratulationsText.SetActive(false);
+                                    winText.SetActive(true);
+                                    isWinText = true;
+                                    textAlpha = 0;
+                                }
+                                congratulationsText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, textAlpha);
+                            }
+
+                            else
+                            {
+                                if (textAlpha < 1)
+                                    textAlpha += Time.deltaTime * 0.5f;
+                                winText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, textAlpha);
+                            }
+                        }
                         blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
+                        winMenu.SetActive(true);
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
                     }
                 }
             }
 
-            if (Input.GetButtonDown("Escape"))
+            if (!isWin)
             {
-                if(Time.timeScale != 0)
+                if (Input.GetButtonDown("Escape"))
                 {
-                    if (!isInPuzzle)
+                    if (Time.timeScale != 0)
                     {
-                        blackScene.SetActive(true);
-                        blackAlpha = 0.75f;
-                        blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
-                        
-                        instruction.SetActive(false);
-                        pauseButton.SetActive(true);
-                        uiCanvas.SetActive(false);
-                        pauseMenu.SetActive(true);
-                        Time.timeScale = 0;
-                        Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = false;
+                        if (!isInPuzzle)
+                        {
+                            blackScene.SetActive(true);
+                            blackAlpha = 0.75f;
+                            blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
+
+                            instruction.SetActive(false);
+                            pauseButton.SetActive(true);
+                            uiCanvas.SetActive(false);
+                            pauseMenu.SetActive(true);
+                            Cursor.lockState = CursorLockMode.None;
+                            Cursor.visible = true;
+                            Time.timeScale = 0;
+                        }
+
+                        else
+                        {
+                            if (puzzleUnlock)
+                            {
+                                isInPuzzle = false;
+                                characterCamera.SetActive(true);
+                                uiCanvas.SetActive(true);
+                            }
+                        }
                     }
 
                     else
                     {
-                        if (puzzleUnlock)
-                        {
-                            isInPuzzle = false;
-                            characterCamera.SetActive(true);
-                            uiCanvas.SetActive(true);
-                        }
+                        blackAlpha = 0;
+                        blackScene.SetActive(false);
+                        blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
+
+                        pauseMenu.SetActive(false);
+                        uiCanvas.SetActive(true);
+                        Time.timeScale = 1;
+                        Cursor.lockState = CursorLockMode.Locked;
                     }
-                }
-
-                else
-                {
-                    blackAlpha = 0;
-                    blackScene.SetActive(false);
-                    blackScene.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, blackAlpha);
-
-                    pauseMenu.SetActive(false);
-                    uiCanvas.SetActive(true);
-                    Time.timeScale = 1;
-                    Cursor.lockState = CursorLockMode.Locked;
                 }
             }
         }
-       else
+
+        else
         {
             uiCanvas.SetActive(false);
             blackScene.SetActive(true);
@@ -234,7 +279,7 @@ public class WorldController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             deathMenu.SetActive(true);
-        }  
+        }
     }
 
     void OpenDoor(GameObject[] door, GameObject camera)
@@ -289,6 +334,7 @@ public class WorldController : MonoBehaviour
         characterCamera.SetActive(true);
         bossCamera.SetActive(false);
         spawnMonster.SetActive(true);
+        manaBar.SetActive(true);
     }
 
     IEnumerator BorderEnable(bool state)
