@@ -87,7 +87,7 @@ public class WorldController : MonoBehaviour
         platformPuzzleNum = 0;
 
         puzzleSloved = 0;
-        isEscapeMode = true;
+        isEscapeMode = false;
 
         exploreAreaClear = false;
         puzzleAreaClear = false;
