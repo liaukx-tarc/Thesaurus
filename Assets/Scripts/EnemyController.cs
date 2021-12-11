@@ -27,6 +27,15 @@ public class EnemyController : MonoBehaviour
 
     public bool isLastSpawn;
 
+    public AudioSource enemySound;
+    public AudioSource attackSound;
+    public AudioClip attack;
+    public AudioClip walk;
+    public AudioClip run;
+    public AudioClip noise;
+    bool isPlayWalkSound;
+    bool isPlayRunSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +52,9 @@ public class EnemyController : MonoBehaviour
         magicType = 0;
         atkDelayTime = 0.5f;
         isNearDoor = false;
+
+        isPlayWalkSound = false;
+        isPlayRunSound = false;
     }
 
     // Update is called once per frame
@@ -82,6 +94,10 @@ public class EnemyController : MonoBehaviour
 
             if (GetComponentInChildren<DetectPlayer>().isIdle)
             {
+                enemySound.Stop();
+                enemySound.clip = noise;
+                enemySound.Play();
+                isPlayWalkSound = false;
                 agent.speed = 0.0f;
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isWalking", false);
@@ -92,11 +108,19 @@ public class EnemyController : MonoBehaviour
                 {
                     if (GetComponentInChildren<DetectPlayer>().isNear && !PlayerController.isInsideHouse)
                     {
+                        enemySound.Stop();
+                        isPlayRunSound = false;
+                        isPlayWalkSound = false;
                         agent.speed = 0.0f;
                         anim.SetBool("isRunning", false);
                         anim.SetBool("isWalking", false);
                         if (atkCD <= 0)
                         {
+                            attackSound.Stop();
+                            attackSound.clip = attack;
+                            attackSound.Play();
+                            isPlayWalkSound = false;
+                            isPlayRunSound = false;
                             anim.SetTrigger("isAttack");
                             atkCD = 2;
                             StartCoroutine(AtkDelay());
@@ -114,12 +138,26 @@ public class EnemyController : MonoBehaviour
                         }
                         if (isNearDoor && PlayerController.isInsideHouse)
                         {
+                            if(isPlayRunSound || isPlayWalkSound)
+                            {
+                                enemySound.Stop();
+                                isPlayRunSound = true;
+                                isPlayWalkSound = false;
+                            }
                             agent.speed = 0.0f;
                             anim.SetBool("isRunning", false);
                             anim.SetBool("isWalking", false);
                         }
                         else
                         {
+                            if (!isPlayRunSound)
+                            {
+                                enemySound.Stop();
+                                enemySound.clip = run;
+                                enemySound.Play();
+                                isPlayRunSound = true;
+                                isPlayWalkSound = false;
+                            }
                             agent.speed = 8.0f * moveSpeed;
                             anim.SetBool("isRunning", true);
                             anim.SetBool("isWalking", false);
@@ -128,6 +166,14 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
+                    if(!isPlayWalkSound)
+                    {
+                        enemySound.Stop();
+                        enemySound.clip = walk;
+                        enemySound.Play();
+                        isPlayWalkSound = true;
+                        isPlayRunSound = false;
+                    }
                     isNearDoor = false;
                     agent.speed = 2f * moveSpeed;
                     anim.SetBool("isRunning", false);
@@ -176,7 +222,18 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(atkDelayTime);
         if(!isStun && agent.remainingDistance < 2f)
         {
-            PlayerController.currentHp--;
+            if(!PlayerController.isDead)
+            {
+                PlayerController.currentHp--;
+                if (PlayerController.currentHp != 0)
+                {
+                    AudioManager.playHurt = true;
+                }
+                else
+                {
+                    AudioManager.playDeath = true;
+                }
+            }
         }
     }
 }

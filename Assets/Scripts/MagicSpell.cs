@@ -98,6 +98,7 @@ public class MagicSpell : MonoBehaviour
             {
                 if(WorldController.isEscapeMode)
                 {
+                    AudioManager.playChangeSpell = true;
                     if (proIndex == 1)
                     {
                         proIndex++;
