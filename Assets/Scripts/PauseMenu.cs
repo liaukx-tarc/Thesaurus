@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject nextBtn;
     public GameObject previousBtn;
     public GameObject blackScene;
+    public GameObject uiCanvas;
 
     public void Resume()
     {
@@ -21,6 +22,7 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        uiCanvas.SetActive(true);
         this.gameObject.SetActive(false);
     }
 

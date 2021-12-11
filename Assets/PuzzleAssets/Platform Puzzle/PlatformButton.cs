@@ -51,8 +51,14 @@ public class PlatformButton : MonoBehaviour
         {
             ghostLeg.isActivate = true;
             light.GetComponent<Renderer>().material.color = new Color(0.45f, 1.0f, 0.15f);
+            WorldController.platformPuzzleNum++;
         }
         else
+        {
             light.GetComponent<Renderer>().material.color = new Color(0.79f, 0.06f, 0.19f);
+            PlayerController.currentHp--;
+        }
+            
+            
     }
 }

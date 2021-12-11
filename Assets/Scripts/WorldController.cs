@@ -24,6 +24,7 @@ public class WorldController : MonoBehaviour
     public GameObject[] exploreAreaDoor;
     public GameObject exploreAreaCamera;
 
+    public static int platformPuzzleNum;
     //Puzzle Area
     static public int puzzleSloved;
     static public bool puzzleComplete;
@@ -48,6 +49,11 @@ public class WorldController : MonoBehaviour
     //mana bar
     public GameObject manaBar;
 
+    //quest
+    public GameObject quest;
+    public GameObject questContext;
+    public bool showQuest;
+
     //dead scene
     public GameObject blackScene;
     private float blackAlpha;
@@ -63,6 +69,7 @@ public class WorldController : MonoBehaviour
     public GameObject winMenu;
     public GameObject winText;
     public GameObject congratulationsText;
+    public GameObject winButton;
     bool isWinText;
     float textAlpha;
 
@@ -77,8 +84,10 @@ public class WorldController : MonoBehaviour
         keyNum = 2;
         keyCollected = 0;
 
+        platformPuzzleNum = 0;
+
         puzzleSloved = 0;
-        isEscapeMode = true;
+        isEscapeMode = false;
 
         exploreAreaClear = false;
         puzzleAreaClear = false;
@@ -93,6 +102,7 @@ public class WorldController : MonoBehaviour
         isInPuzzle = false;
         puzzleUnlock = false;
         isWinText = false;
+        showQuest = false;
 
         CheckEndGame.manaballNeeded = manaBallNeeded;
         ManaBallCollect.manaBallNeeded = manaBallNeeded;
@@ -102,6 +112,8 @@ public class WorldController : MonoBehaviour
         manaBallNum = 0;
 
         Cursor.lockState = CursorLockMode.Locked;
+        StartCoroutine(QuestAppear());
+
     }
 
     // Update is called once per frame
@@ -109,6 +121,7 @@ public class WorldController : MonoBehaviour
     {
         if (!PlayerController.isDead)
         {
+            Quest();
             if (!isEscapeMode)
             {
                 if (keyCollected == keyNum && !exploreAreaClear)
@@ -208,6 +221,8 @@ public class WorldController : MonoBehaviour
                             {
                                 if (textAlpha < 1)
                                     textAlpha += Time.deltaTime * 0.5f;
+                                else
+                                    winButton.SetActive(true);
                                 winText.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, textAlpha);
                             }
                         }
@@ -221,6 +236,17 @@ public class WorldController : MonoBehaviour
 
             if (!isWin)
             {
+                if(showQuest)
+                {
+                    if (Input.GetButton("Quest"))
+                    {
+                        quest.SetActive(true);
+                    }
+                    else
+                    {
+                        quest.SetActive(false);
+                    }
+                }
                 if (Input.GetButtonDown("Escape"))
                 {
                     if (Time.timeScale != 0)
@@ -328,6 +354,35 @@ public class WorldController : MonoBehaviour
         StartCoroutine(SpawnNormal());
     }
 
+    public void Quest()
+    {
+        questContext.GetComponent<TextMeshProUGUI>().color = new Color(180 / 255.0f, 180 / 255.0f, 180 / 255.0f, 1);
+        if (!exploreAreaClear)
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Collect key parts to unlock the main gate (" + keyCollected + "/"+ keyNum +")";
+        }
+        else if (platformPuzzleNum < 3)
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Solve platform puzzles (" + platformPuzzleNum + "/" + 3 + ")";
+        }
+        else if (puzzleSloved < 3)
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Investigate crystals in the garden (" + puzzleSloved + "/" + 3 + ")";
+        }
+        else if (!isEscapeMode)
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Collect Spell Book in the temple";
+        }
+        else if(manaBallNum < manaBallNeeded)
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Collect energy ball to break the magic border (" + manaBallNum + "/" + manaBallNeeded + ")";
+        }
+        else
+        {
+            questContext.GetComponent<TextMeshProUGUI>().text = "Escape from here !";
+        }
+    }
+
     IEnumerator SpawnNormal()
     {
         yield return new WaitForSeconds(6.0f);
@@ -358,5 +413,13 @@ public class WorldController : MonoBehaviour
                 cityBorder.SetActive(false);
             }
         }
+    }
+    IEnumerator QuestAppear()
+    {
+        yield return new WaitForSeconds(3.0f);
+        quest.SetActive(true);
+        yield return new WaitForSeconds(5.0f);
+        quest.SetActive(false);
+        showQuest = true;
     }
 }

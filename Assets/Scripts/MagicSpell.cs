@@ -45,9 +45,9 @@ public class MagicSpell : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 4, interactableLayer))
             {
-                handIcon.SetActive(true);
-                if (hit.collider.gameObject.tag == "Door")
+                if (hit.collider.gameObject.tag == "Door" && !DoorControl.isLock)
                 {
+                    handIcon.SetActive(true);
                     if (Input.GetButton("Interact"))
                     {
                         if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
@@ -63,13 +63,15 @@ public class MagicSpell : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.tag == "Key")
                 {
+                    handIcon.SetActive(true);
                     if (Input.GetButton("Interact"))
                     {
                         hit.collider.gameObject.GetComponent<KeyCollect>().Collect();
                     }
                 }
-                else if (hit.collider.gameObject.tag == "Puzzle")
+                else if (hit.collider.gameObject.tag == "Puzzle" && !hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().isComplete)
                 {
+                    handIcon.SetActive(true);
                     if (Input.GetButton("Interact"))
                     {
                         hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().PuzzleControl(true);
@@ -77,6 +79,7 @@ public class MagicSpell : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.tag == "Book")
                 {
+                    handIcon.SetActive(true);
                     if (Input.GetButton("Interact"))
                     {
                         hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
@@ -113,11 +116,11 @@ public class MagicSpell : MonoBehaviour
                 }  
             }
 
-            if(isSwitchColor)
+            if(isSwitchColor && !WorldController.isWin)
             {
                 intensity += Time.deltaTime * 0.1f;
                 this.gameObject.GetComponentInChildren<Light>().intensity = Mathf.Lerp(0, 6, intensity);
-                if(intensity > 6)
+                if(intensity > 1)
                 {
                     isSwitchColor = false;
                     intensity = 0;
