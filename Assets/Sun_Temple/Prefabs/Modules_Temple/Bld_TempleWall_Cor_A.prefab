@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33531610245807972}
   - component: {fileID: 23121363873312062}
   - component: {fileID: 65978871892465420}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 33433364833739920}
   - component: {fileID: 23260747475828212}
   - component: {fileID: 64134994606756622}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 33778466602539742}
   - component: {fileID: 23204232989973584}
   - component: {fileID: 65098844795668640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 4634031770061862}
   - component: {fileID: 33023022299222172}
   - component: {fileID: 23227460743718738}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 33502440799781594}
   - component: {fileID: 23385427268620976}
   - component: {fileID: 65578745411088452}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 4169747864848636}
   - component: {fileID: 33607147974180788}
   - component: {fileID: 23960091567645104}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 4783435144011040}
   - component: {fileID: 33850500465852794}
   - component: {fileID: 23645567329636312}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 33883362535791220}
   - component: {fileID: 23118228948737804}
   - component: {fileID: 65808328773401310}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 4954645464428070}
   - component: {fileID: 33208334935696354}
   - component: {fileID: 23159102192115684}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 33422564811911832}
   - component: {fileID: 23749190760755240}
   - component: {fileID: 64556964473210310}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 4800257902796080}
   - component: {fileID: 33422890104441446}
   - component: {fileID: 23805905724503928}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 33402257727476238}
   - component: {fileID: 23187818133148242}
   - component: {fileID: 65764159730751622}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 33742189680743256}
   - component: {fileID: 23531615654149182}
   - component: {fileID: 65387742441602556}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 33058497184500948}
   - component: {fileID: 23364832069085154}
   - component: {fileID: 64375355680083736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 33628196807188392}
   - component: {fileID: 23980451055214240}
   - component: {fileID: 65358115521362902}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 4903068257364474}
   - component: {fileID: 33726621702774690}
   - component: {fileID: 23343772935968592}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,7 +1474,7 @@ GameObject:
   - component: {fileID: 33899991345753874}
   - component: {fileID: 23786043170123604}
   - component: {fileID: 65564510790827024}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 4817054221378336}
   - component: {fileID: 33440514824525246}
   - component: {fileID: 23007381380172474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 33899253903294034}
   - component: {fileID: 23692093226691632}
   - component: {fileID: 65766600573505584}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 33261079448011416}
   - component: {fileID: 23684352888529924}
   - component: {fileID: 65969657004247088}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Prop_FlowerPot_A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1850,7 +1850,7 @@ GameObject:
   - component: {fileID: 4142727198524828}
   - component: {fileID: 33919693854467130}
   - component: {fileID: 23340990434788558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1932,7 +1932,7 @@ GameObject:
   - component: {fileID: 33753566008692090}
   - component: {fileID: 23218489999636458}
   - component: {fileID: 65871692353479142}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Prop_FlowerPot_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2034,7 +2034,7 @@ GameObject:
   - component: {fileID: 33319707332073614}
   - component: {fileID: 23983019368898132}
   - component: {fileID: 65805772345599202}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2130,7 +2130,7 @@ GameObject:
   - component: {fileID: 4997512024573256}
   - component: {fileID: 33317196249628874}
   - component: {fileID: 23905841141020548}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 33254572527079134}
   - component: {fileID: 23101440127819312}
   - component: {fileID: 64405978788067558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2311,7 +2311,7 @@ GameObject:
   - component: {fileID: 33417079453370958}
   - component: {fileID: 23183757139857228}
   - component: {fileID: 65184518294053362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2408,7 +2408,7 @@ GameObject:
   - component: {fileID: 33267753693014074}
   - component: {fileID: 23174049319038294}
   - component: {fileID: 65311152493564612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2505,7 +2505,7 @@ GameObject:
   - component: {fileID: 33378125864527952}
   - component: {fileID: 23769020854837298}
   - component: {fileID: 65193849805210384}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2601,7 +2601,7 @@ GameObject:
   - component: {fileID: 33239919228817364}
   - component: {fileID: 23082874319398372}
   - component: {fileID: 65650543616130222}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2698,7 +2698,7 @@ GameObject:
   - component: {fileID: 33175613982403392}
   - component: {fileID: 23245088240758736}
   - component: {fileID: 64027934470795962}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2796,7 +2796,7 @@ GameObject:
   - component: {fileID: 4541810116284924}
   - component: {fileID: 33697906772288216}
   - component: {fileID: 23075853843167602}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2878,7 +2878,7 @@ GameObject:
   - component: {fileID: 33608843075355960}
   - component: {fileID: 23578623019001832}
   - component: {fileID: 65846656252163254}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2975,7 +2975,7 @@ GameObject:
   - component: {fileID: 33405409608539494}
   - component: {fileID: 23231320895219162}
   - component: {fileID: 65101998573177982}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3072,7 +3072,7 @@ GameObject:
   - component: {fileID: 33087897929384354}
   - component: {fileID: 23575881598167588}
   - component: {fileID: 64239936250630884}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3170,7 +3170,7 @@ GameObject:
   - component: {fileID: 4888418510171256}
   - component: {fileID: 33650712962136002}
   - component: {fileID: 23686875556730906}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3252,7 +3252,7 @@ GameObject:
   - component: {fileID: 33353877950196494}
   - component: {fileID: 23511349979015724}
   - component: {fileID: 65090645592279886}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3349,7 +3349,7 @@ GameObject:
   - component: {fileID: 33957733344972378}
   - component: {fileID: 23121575655070382}
   - component: {fileID: 64249646297807512}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3447,7 +3447,7 @@ GameObject:
   - component: {fileID: 4507318912359456}
   - component: {fileID: 33767514568543570}
   - component: {fileID: 23424489944825594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_B (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3529,7 +3529,7 @@ GameObject:
   - component: {fileID: 33642228508302976}
   - component: {fileID: 23222928107912184}
   - component: {fileID: 64564198619194204}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3627,7 +3627,7 @@ GameObject:
   - component: {fileID: 4822350056946792}
   - component: {fileID: 33034506010151564}
   - component: {fileID: 23381196676382056}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3708,7 +3708,7 @@ GameObject:
   - component: {fileID: 4232411257335572}
   - component: {fileID: 33717287104147572}
   - component: {fileID: 23274235534104110}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3789,7 +3789,7 @@ GameObject:
   - component: {fileID: 4334180515825164}
   - component: {fileID: 33414179111727804}
   - component: {fileID: 23982178880183914}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3871,7 +3871,7 @@ GameObject:
   - component: {fileID: 33570630772887092}
   - component: {fileID: 23484122571432290}
   - component: {fileID: 65832150881522804}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3968,7 +3968,7 @@ GameObject:
   - component: {fileID: 33885883427239804}
   - component: {fileID: 23203842350077294}
   - component: {fileID: 65342286966495468}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4063,7 +4063,7 @@ GameObject:
   - component: {fileID: 4968377757987878}
   - component: {fileID: 33352371180645020}
   - component: {fileID: 23737252983599634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4144,7 +4144,7 @@ GameObject:
   - component: {fileID: 4808882508457742}
   - component: {fileID: 33305167143294586}
   - component: {fileID: 23662528463987710}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4226,7 +4226,7 @@ GameObject:
   - component: {fileID: 33623876068738188}
   - component: {fileID: 23713973524858908}
   - component: {fileID: 65406420784193192}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4322,7 +4322,7 @@ GameObject:
   - component: {fileID: 4260245921889508}
   - component: {fileID: 33674302825349144}
   - component: {fileID: 23369060284243612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4404,7 +4404,7 @@ GameObject:
   - component: {fileID: 33236554160151212}
   - component: {fileID: 23871152980629748}
   - component: {fileID: 64497066382947858}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4503,7 +4503,7 @@ GameObject:
   - component: {fileID: 33662380796939988}
   - component: {fileID: 23188267524125754}
   - component: {fileID: 64118087170184208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4602,7 +4602,7 @@ GameObject:
   - component: {fileID: 33217697950262016}
   - component: {fileID: 23871595435041314}
   - component: {fileID: 65798308797895056}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4698,7 +4698,7 @@ GameObject:
   - component: {fileID: 33243436796668790}
   - component: {fileID: 23590822160935388}
   - component: {fileID: 65672599453351556}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Prop_FlowerPot_A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4800,7 +4800,7 @@ GameObject:
   - component: {fileID: 33491929006983348}
   - component: {fileID: 23111292750125182}
   - component: {fileID: 65419059968667232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4895,7 +4895,7 @@ GameObject:
   - component: {fileID: 4076076860863758}
   - component: {fileID: 33574368139610418}
   - component: {fileID: 23479667487613032}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4976,7 +4976,7 @@ GameObject:
   - component: {fileID: 4446187698341436}
   - component: {fileID: 33085379215874698}
   - component: {fileID: 23316408900068722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5057,7 +5057,7 @@ GameObject:
   - component: {fileID: 4280519670710910}
   - component: {fileID: 33031213972200134}
   - component: {fileID: 23346793367836768}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_WindowFlowers_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5139,7 +5139,7 @@ GameObject:
   - component: {fileID: 33250772263324762}
   - component: {fileID: 23883134669084140}
   - component: {fileID: 64338313306766264}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5237,7 +5237,7 @@ GameObject:
   - component: {fileID: 4120668718182668}
   - component: {fileID: 33287537806041542}
   - component: {fileID: 23624932295927054}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5319,7 +5319,7 @@ GameObject:
   - component: {fileID: 33429595440970720}
   - component: {fileID: 23244158191027716}
   - component: {fileID: 65809514202474638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5416,7 +5416,7 @@ GameObject:
   - component: {fileID: 33201895420312998}
   - component: {fileID: 23491235428978606}
   - component: {fileID: 65650983304022552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5513,7 +5513,7 @@ GameObject:
   - component: {fileID: 33692332855038754}
   - component: {fileID: 23912243721799808}
   - component: {fileID: 65325839577305022}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5609,7 +5609,7 @@ GameObject:
   - component: {fileID: 4106925943946264}
   - component: {fileID: 33430431109869202}
   - component: {fileID: 23046145695739674}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5690,7 +5690,7 @@ GameObject:
   - component: {fileID: 4382911542527388}
   - component: {fileID: 33951694307295050}
   - component: {fileID: 23899390053753174}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5771,7 +5771,7 @@ GameObject:
   - component: {fileID: 4063504116150450}
   - component: {fileID: 33540047666717172}
   - component: {fileID: 23858066210415490}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5853,7 +5853,7 @@ GameObject:
   - component: {fileID: 33171949944383204}
   - component: {fileID: 23434704586270982}
   - component: {fileID: 65043838589303166}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5948,7 +5948,7 @@ GameObject:
   - component: {fileID: 4280666447532758}
   - component: {fileID: 33993315011913926}
   - component: {fileID: 23803118770097408}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6030,7 +6030,7 @@ GameObject:
   - component: {fileID: 33145715960154758}
   - component: {fileID: 23087907381412928}
   - component: {fileID: 65004830821612910}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6127,7 +6127,7 @@ GameObject:
   - component: {fileID: 33452325075078146}
   - component: {fileID: 23700989531527758}
   - component: {fileID: 65770904443273854}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Temple_Deco_SideSupport_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6222,7 +6222,7 @@ GameObject:
   - component: {fileID: 4237869663464094}
   - component: {fileID: 33230780047301608}
   - component: {fileID: 23785962123075792}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_WindowFlowers_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6303,7 +6303,7 @@ GameObject:
   - component: {fileID: 4663048085108210}
   - component: {fileID: 33023209298608198}
   - component: {fileID: 23314488898167180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6385,7 +6385,7 @@ GameObject:
   - component: {fileID: 33636072309854448}
   - component: {fileID: 23356288330437020}
   - component: {fileID: 65698493505287344}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6481,7 +6481,7 @@ GameObject:
   - component: {fileID: 4613877219799054}
   - component: {fileID: 33505183082678284}
   - component: {fileID: 23565996284462842}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,7 +6562,7 @@ GameObject:
   - component: {fileID: 4717512103007730}
   - component: {fileID: 33474677413471164}
   - component: {fileID: 23243861828772690}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_B (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6643,7 +6643,7 @@ GameObject:
   - component: {fileID: 4297498099139506}
   - component: {fileID: 33859956980295182}
   - component: {fileID: 23202175865355558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_WindowFlowers_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6725,7 +6725,7 @@ GameObject:
   - component: {fileID: 33025707686194444}
   - component: {fileID: 23455787984164200}
   - component: {fileID: 64692313549600578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_TempleWall_Cor_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6864,7 +6864,7 @@ GameObject:
   - component: {fileID: 4609454104281448}
   - component: {fileID: 33220399360317002}
   - component: {fileID: 23715244062461464}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_B (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6946,7 +6946,7 @@ GameObject:
   - component: {fileID: 33266913613598434}
   - component: {fileID: 23058592340261090}
   - component: {fileID: 65031910918215276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7042,7 +7042,7 @@ GameObject:
   - component: {fileID: 4524586180073972}
   - component: {fileID: 33100417237200636}
   - component: {fileID: 23264079219525562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_D (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7123,7 +7123,7 @@ GameObject:
   - component: {fileID: 4910648865778906}
   - component: {fileID: 33769690460614414}
   - component: {fileID: 23849375652807890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fol_BushFlower_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7205,7 +7205,7 @@ GameObject:
   - component: {fileID: 33690439185991110}
   - component: {fileID: 23242606014943416}
   - component: {fileID: 64565182122593892}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Common_Window_A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7303,7 +7303,7 @@ GameObject:
   - component: {fileID: 4981559515457658}
   - component: {fileID: 33204021564104720}
   - component: {fileID: 23671914772928542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bld_Deco_RoofPiece_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7384,6 +7384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bld_Tall_Floor_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1973508184966946, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4748221469036526, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -7453,6 +7457,10 @@ PrefabInstance:
     - target: {fileID: 1973508184966946, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
       propertyPath: m_Name
       value: Bld_Tall_Floor_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973508184966946, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4748221469036526, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
       propertyPath: m_RootOrder

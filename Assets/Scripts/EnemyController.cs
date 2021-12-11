@@ -106,7 +106,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (GetComponentInChildren<DetectPlayer>().isPlayerDetected)
                 {
-                    if (GetComponentInChildren<DetectPlayer>().isNear && !PlayerController.isInsideHouse)
+                    if (GetComponentInChildren<DetectPlayer>().isNear && !PlayerController.isInsideHouse && !PlayerController.isDead)
                     {
                         enemySound.Stop();
                         isPlayRunSound = false;
@@ -121,6 +121,7 @@ public class EnemyController : MonoBehaviour
                             attackSound.Play();
                             isPlayWalkSound = false;
                             isPlayRunSound = false;
+
                             anim.SetTrigger("isAttack");
                             atkCD = 2;
                             StartCoroutine(AtkDelay());
