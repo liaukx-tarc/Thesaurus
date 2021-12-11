@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
     public void InstructionButtonClicked()
     {
         playBtnSound();
-        mainMenu.SetActive(false);
         instruction.SetActive(true);
     }
 
@@ -45,7 +44,6 @@ public class UIManager : MonoBehaviour
     {
         playBtnSound();
         instruction.SetActive(false);
-        mainMenu.SetActive(true);
     }
 
     public void NextButtonClicked()
