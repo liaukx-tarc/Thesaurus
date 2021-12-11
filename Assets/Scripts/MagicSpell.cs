@@ -21,6 +21,7 @@ public class MagicSpell : MonoBehaviour
     public GameObject[] psCircle;
     private ParticleSystem.MainModule main;
     private bool magicUpgrade;
+    public GameObject handIcon;
 
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class MagicSpell : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 4, interactableLayer))
             {
+                handIcon.SetActive(true);
                 if (hit.collider.gameObject.tag == "Door")
                 {
                     if (Input.GetButton("Interact"))
@@ -80,6 +82,10 @@ public class MagicSpell : MonoBehaviour
                         hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
                     }
                 }
+            }
+            else
+            {
+                handIcon.SetActive(false);
             }
             if (Input.GetButtonDown("Switch"))
             {
