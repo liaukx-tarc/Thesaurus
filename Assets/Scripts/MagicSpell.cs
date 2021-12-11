@@ -48,14 +48,16 @@ public class MagicSpell : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Door" && !DoorControl.isLock)
                 {
                     handIcon.SetActive(true);
-                    if (Input.GetButton("Interact"))
+                    if (Input.GetButtonDown("Interact"))
                     {
                         if (!hit.collider.gameObject.GetComponentInParent<DoorControl>().isOpen)
                         {
+                            AudioManager.playDoorOpenSound = true;
                             hit.collider.gameObject.GetComponentInParent<DoorControl>().doorOpening = true;
                         }
                         else
                         {
+                            AudioManager.playDoorCloseSound = true;
                             hit.collider.gameObject.GetComponentInParent<DoorControl>().doorClosing = true;
                         }
                     }
@@ -64,23 +66,25 @@ public class MagicSpell : MonoBehaviour
                 else if (hit.collider.gameObject.tag == "Key")
                 {
                     handIcon.SetActive(true);
-                    if (Input.GetButton("Interact"))
+                    if (Input.GetButtonDown("Interact"))
                     {
+                        AudioManager.playKeyCollectSound = true;
                         hit.collider.gameObject.GetComponent<KeyCollect>().Collect();
                     }
                 }
                 else if (hit.collider.gameObject.tag == "Puzzle" && !hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().isComplete)
                 {
                     handIcon.SetActive(true);
-                    if (Input.GetButton("Interact"))
+                    if (Input.GetButtonDown("Interact"))
                     {
+                        AudioManager.playPuzzleActiveSound = true;
                         hit.collider.gameObject.GetComponentInParent<ActivePuzzle>().PuzzleControl(true);
                     }
                 }
                 else if (hit.collider.gameObject.tag == "Book")
                 {
                     handIcon.SetActive(true);
-                    if (Input.GetButton("Interact"))
+                    if (Input.GetButtonDown("Interact"))
                     {
                         hit.collider.gameObject.GetComponent<SpellBookCollect>().Collect();
                     }

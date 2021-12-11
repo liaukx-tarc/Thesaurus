@@ -114,6 +114,7 @@ public class WorldController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(QuestAppear());
 
+        
     }
 
     // Update is called once per frame
@@ -160,6 +161,7 @@ public class WorldController : MonoBehaviour
 
                         manaBallCollection.SetActive(true);
                         manaBallNum = 0;
+                        AudioManager.playManaBallSpawnSound = true;
                         borderCamera.SetActive(false);
                         manaBallCamera.SetActive(true);
                         StartCoroutine(StopCutScene(manaBallCamera, 5));
@@ -338,6 +340,7 @@ public class WorldController : MonoBehaviour
     {
         cityBorder.SetActive(true);
         //Start Border Cut Scene
+        AudioManager.playBorderSound = true;
         uiCanvas.SetActive(false);
         characterCamera.SetActive(false);
         borderCamera.SetActive(true);
