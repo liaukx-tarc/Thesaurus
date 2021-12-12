@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4085427406718780}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_TempleTower_Arc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,25 +38,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4085427406718780}
     m_Modifications:
-    - target: {fileID: -5184208758596292159, guid: 285991b6f9413be479180dada4793937, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -3811254434449417863, guid: 285991b6f9413be479180dada4793937, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -3194409336458197712, guid: 285991b6f9413be479180dada4793937, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 285991b6f9413be479180dada4793937, type: 3}
       propertyPath: m_Name
       value: Bld_TempleTower_Arc
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 285991b6f9413be479180dada4793937, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 285991b6f9413be479180dada4793937, type: 3}
       propertyPath: m_RootOrder
@@ -101,10 +85,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 285991b6f9413be479180dada4793937, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6497830958171407490, guid: 285991b6f9413be479180dada4793937, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285991b6f9413be479180dada4793937, type: 3}

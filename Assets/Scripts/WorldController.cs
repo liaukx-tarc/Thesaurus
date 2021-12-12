@@ -77,9 +77,6 @@ public class WorldController : MonoBehaviour
     public GameObject instruction;
     public GameObject pauseButton;
 
-    bool isPlayDeathBGM;
-    bool isPlayWinBGM;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +86,7 @@ public class WorldController : MonoBehaviour
         platformPuzzleNum = 0;
 
         puzzleSloved = 0;
-        isEscapeMode = false;
+        isEscapeMode = true;
 
         exploreAreaClear = false;
         puzzleAreaClear = false;
@@ -105,9 +102,6 @@ public class WorldController : MonoBehaviour
         puzzleUnlock = false;
         isWinText = false;
         showQuest = false;
-
-        isPlayDeathBGM = false;
-        isPlayWinBGM = false;
 
         CheckEndGame.manaballNeeded = manaBallNeeded;
         ManaBallCollect.manaBallNeeded = manaBallNeeded;
@@ -202,12 +196,6 @@ public class WorldController : MonoBehaviour
 
                     if (isSceneComplete)
                     {
-                        if (!isPlayWinBGM)
-                        {
-                            AudioManager.playWinBgm = true;
-                            isPlayWinBGM = true;
-                        }
-                            
                         blackScene.SetActive(true);
                         if (blackAlpha < 1)
                         {
@@ -293,12 +281,6 @@ public class WorldController : MonoBehaviour
 
         else
         {
-            if(!isPlayDeathBGM)
-            {
-                AudioManager.playDeathBgm = true;
-                isPlayDeathBGM = true;
-            }
-            
             uiCanvas.SetActive(false);
             blackScene.SetActive(true);
             if (blackAlpha < 1)
@@ -396,7 +378,6 @@ public class WorldController : MonoBehaviour
         bossCamera.SetActive(false);
         spawnMonster.SetActive(true);
         manaBar.SetActive(true);
-        AudioManager.playEscapeBgm = true;
     }
 
     IEnumerator BorderEnable(bool state)
