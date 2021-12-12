@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6272719826538687340}
   - component: {fileID: 6282205527874953786}
   - component: {fileID: 6310618163403015004}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6273315711775695584}
   - component: {fileID: 6282109774836581946}
   - component: {fileID: 6313208055188971492}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 6272620558910563712}
   - component: {fileID: 6282140033605978544}
   - component: {fileID: 6313349562168364090}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 6269595234318078544}
   - component: {fileID: 6280775805086658104}
   - component: {fileID: 6313592777073401058}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 6272736084477438198}
   - component: {fileID: 6282152582304825076}
   - component: {fileID: 6313445867771549184}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 6272410047294189738}
   - component: {fileID: 6280426681289660558}
   - component: {fileID: 6313314280884023826}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 6299001117096551304}
   - component: {fileID: 6269815446536973590}
   - component: {fileID: 6280762883814880642}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Deco_RoofPiece_D (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 6272902245521261548}
   - component: {fileID: 6282078070716718934}
   - component: {fileID: 6313248749691002074}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 6302125818720767570}
   - component: {fileID: 6273270562224816148}
   - component: {fileID: 6280721235963135856}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Deco_RoofPiece_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 6302202988050984518}
   - component: {fileID: 6269723052211514634}
   - component: {fileID: 6280525136904988656}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Deco_RoofPiece_D (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 6269630876528259658}
   - component: {fileID: 6280738876452410128}
   - component: {fileID: 6309733176541419512}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Temple_Deco_SideSupport_A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 6272393399592413314}
   - component: {fileID: 6282005600496170042}
   - component: {fileID: 6312144962318275306}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 6272943463607047188}
   - component: {fileID: 6282227684467827008}
   - component: {fileID: 6310549604017964010}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 6273245578001945180}
   - component: {fileID: 6280736519958296420}
   - component: {fileID: 6313543349115871686}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 6299167437794747258}
   - component: {fileID: 6272532359360892440}
   - component: {fileID: 6280517493737549596}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Deco_RoofPiece_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ GameObject:
   - component: {fileID: 6272699304111999872}
   - component: {fileID: 6282094659604060234}
   - component: {fileID: 6310177186141532582}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 6273247798497311378}
   - component: {fileID: 6282404162498364054}
   - component: {fileID: 6309802113322202780}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,7 +1601,7 @@ GameObject:
   - component: {fileID: 6298916661464151090}
   - component: {fileID: 6272771111143166936}
   - component: {fileID: 6280286122503952366}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Deco_RoofPiece_D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 6272912282660740910}
   - component: {fileID: 6280807049591885636}
   - component: {fileID: 6314027882493540030}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 6269729531059534336}
   - component: {fileID: 6280578403089508440}
   - component: {fileID: 6310493092168319914}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Temple_Deco_SideSupport_A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1878,7 +1878,7 @@ GameObject:
   - component: {fileID: 6272518744949788256}
   - component: {fileID: 6280571768407050316}
   - component: {fileID: 6310404049622787588}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1975,7 +1975,7 @@ GameObject:
   - component: {fileID: 6273302723681425006}
   - component: {fileID: 6282018892302813484}
   - component: {fileID: 6314031326683158792}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2074,7 @@ GameObject:
   - component: {fileID: 6272684627457024528}
   - component: {fileID: 6280635407050435374}
   - component: {fileID: 6310642812251527432}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Temple_Deco_SideSupport_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2170,7 +2170,7 @@ GameObject:
   - component: {fileID: 6269616069725513182}
   - component: {fileID: 6280309312748522526}
   - component: {fileID: 6313299598210461432}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2267,7 +2267,7 @@ GameObject:
   - component: {fileID: 6269592473936991576}
   - component: {fileID: 6280589238104641162}
   - component: {fileID: 6314028623183466002}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_TempleWall_Mid_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2383,7 +2383,7 @@ GameObject:
   - component: {fileID: 6269756964144799538}
   - component: {fileID: 6282425588177334638}
   - component: {fileID: 6310127625361998362}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Temple_Deco_SideSupport_A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2479,7 +2479,7 @@ GameObject:
   - component: {fileID: 6269732919409916324}
   - component: {fileID: 6280445045503116172}
   - component: {fileID: 6313514831411374628}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Window_A (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 6269591083303031646}
   - component: {fileID: 6280334733357032784}
   - component: {fileID: 6313411571819616896}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Bld_Common_Windowframe_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2673,10 +2673,6 @@ PrefabInstance:
     - target: {fileID: 1973508184966946, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
       propertyPath: m_Name
       value: Bld_Tall_Floor_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973508184966946, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4748221469036526, guid: 546dbbb25870a134f950f9e8d86a86d0, type: 3}
       propertyPath: m_RootOrder

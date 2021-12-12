@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4487678269024555027}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Fullwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 7613974441606687053}
   - component: {fileID: 7623878326740359535}
   - component: {fileID: 7631468244517317701}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (464)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7620879868363147745}
   - component: {fileID: 7632211234321064239}
   - component: {fileID: 7592126765723545159}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Fullwall_Mid_A (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 7616962732181183255}
   - component: {fileID: 7624547353818627051}
   - component: {fileID: 7631680997316767383}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (465)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 7624012994998704825}
   - component: {fileID: 7633316073600862297}
   - component: {fileID: 7592998740496288765}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Fullwall_Mid_A (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 7614160981307828349}
   - component: {fileID: 7623971834226053719}
   - component: {fileID: 7631613902564147855}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (476)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 7613954381277123175}
   - component: {fileID: 7620821593143874611}
   - component: {fileID: 7633516434833510345}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (479)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 7614128719277531417}
   - component: {fileID: 7623966246323118675}
   - component: {fileID: 7633509818561396955}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (469)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 7614040466003088231}
   - component: {fileID: 7623745967396303113}
   - component: {fileID: 7633482928844506017}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (473)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 7614235526831031299}
   - component: {fileID: 7620803815768879575}
   - component: {fileID: 7632269287925367241}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (463)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 7623760187540091213}
   - component: {fileID: 7633522958739687991}
   - component: {fileID: 7589582039456687803}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Rail_Mid_B (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 7614196640694636589}
   - component: {fileID: 7620683311582804729}
   - component: {fileID: 7631463200233864377}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (468)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 7616931696381951821}
   - component: {fileID: 7624426836333739051}
   - component: {fileID: 7631485712654978813}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (467)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 7617207284799111013}
   - component: {fileID: 7623481329114605731}
   - component: {fileID: 7633205949918991249}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (478)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 7614086328104924005}
   - component: {fileID: 7620896484901895535}
   - component: {fileID: 7631622647135449647}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (475)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 7623800428961067087}
   - component: {fileID: 7633199784571041423}
   - component: {fileID: 7592949745591190247}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Fullwall_Mid_A (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +1338,7 @@ GameObject:
   - component: {fileID: 7613978713912789129}
   - component: {fileID: 7623837479655183279}
   - component: {fileID: 7631773177219574371}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (466)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 7623715581220084017}
   - component: {fileID: 7631661352813965503}
   - component: {fileID: 7589377388476446497}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Rail_Mid_B (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1515,7 @@ GameObject:
   - component: {fileID: 7613903316305334177}
   - component: {fileID: 7620806138185390191}
   - component: {fileID: 7631492669001915631}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (472)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,7 +1596,7 @@ GameObject:
   - component: {fileID: 7616929450449456517}
   - component: {fileID: 7620808342610003293}
   - component: {fileID: 7632295608501768533}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (477)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,7 +1678,7 @@ GameObject:
   - component: {fileID: 7620778886859499097}
   - component: {fileID: 7631441456851469351}
   - component: {fileID: 7592164167160046251}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Fullwall_Mid_A (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1773,7 +1773,7 @@ GameObject:
   - component: {fileID: 7613922527129217891}
   - component: {fileID: 7620801097705990625}
   - component: {fileID: 7631678764007028461}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (474)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,7 +1854,7 @@ GameObject:
   - component: {fileID: 7614116425553715133}
   - component: {fileID: 7624566882554546489}
   - component: {fileID: 7631652086040864615}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Struct_Curb_A (481)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
