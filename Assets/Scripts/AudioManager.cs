@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource worldSound;
     public AudioSource playerSound;
+    public AudioSource playWalkStop;
     public AudioSource bgmSound;
 
     //Sound Clip
@@ -162,16 +163,14 @@ public class AudioManager : MonoBehaviour
                 playerSound.clip = changeSpell;
                 playerSound.Play();
                 playChangeSpell = false;
-            }
-
-            
-            
+            } 
         }
 
         else
         {
             if(!isSoundStop)
             {
+                playWalkStop.Stop();
                 playerSound.Stop();
                 worldSound.Stop();
                 isSoundStop = true;
