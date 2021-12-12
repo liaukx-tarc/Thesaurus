@@ -153,11 +153,11 @@ public class MagicSpell : MonoBehaviour
 
             if (isAttackDelay)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0.4f, 0, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0.4f, 0, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0, 0.4f, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out hit, 40, enemyLayer))
                 {
                     if (hit.collider.tag == "Enemy")
                     {

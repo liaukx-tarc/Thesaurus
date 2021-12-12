@@ -134,6 +134,7 @@ public class WorldController : MonoBehaviour
                 {
                     exploreAreaClear = true;
                     uiCanvas.SetActive(false);
+                    AudioManager.playDoorOpenSound = true;
                     OpenDoor(exploreAreaDoor, exploreAreaCamera);
                 }
 
@@ -148,6 +149,7 @@ public class WorldController : MonoBehaviour
                     {
                         uiCanvas.SetActive(false);
                         puzzleAreaClear = true;
+                        AudioManager.playDoorOpenSound = true;
                         OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
                     }
                 }
