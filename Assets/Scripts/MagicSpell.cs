@@ -9,7 +9,6 @@ public class MagicSpell : MonoBehaviour
     public RaycastHit hit;
     public bool isAttackDelay;
     private float attackDelay;
-    private float alpha;
     private int enemyLayer = 1 << 8;
     private int interactableLayer = 1 << 9;
     private int proIndex;
@@ -32,7 +31,6 @@ public class MagicSpell : MonoBehaviour
         isSwitchColor = false;
         magicUpgrade = false;
         attackDelay = 0.0f;
-        alpha = 0.0f;
         intensity = 0;
         proIndex = 0;
         r = 1; g = 1; b = 1;

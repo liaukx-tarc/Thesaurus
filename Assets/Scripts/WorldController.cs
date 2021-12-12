@@ -69,7 +69,6 @@ public class WorldController : MonoBehaviour
     public GameObject winMenu;
     public GameObject winText;
     public GameObject winButton;
-    bool isWinText;
     float textAlpha;
 
     //Pause Menu
@@ -103,7 +102,6 @@ public class WorldController : MonoBehaviour
         isSceneComplete = false;
         isInPuzzle = false;
         puzzleUnlock = false;
-        isWinText = false;
         showQuest = false;
 
         isPlayDeathBGM = false;
