@@ -10,8 +10,6 @@ public class PlatformButton : MonoBehaviour
     public GameObject ansPrefab;
 
     bool isActive;
-    string spellTag;
-    string colorName;
     GhostLeg ghostLeg;
     GameObject light;
 
@@ -21,7 +19,6 @@ public class PlatformButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colorName = "_Color";
         ghostLeg = gameObject.GetComponentInParent<GhostLeg>();
         light = this.transform.GetChild(1).gameObject;
         isHit = false;

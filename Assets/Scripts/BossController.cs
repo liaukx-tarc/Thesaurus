@@ -121,7 +121,7 @@ public class BossController : MonoBehaviour
                 if (agent.remainingDistance < 4f && agent.remainingDistance > 0.1f)
                 {
                     bossSound.Stop();
-                    isPlayRunSound = true;
+                    isPlayRunSound = false;
                     agent.speed = 0;
                     anim.SetBool("isRunning", false);
                     if (atkCD <= 0)

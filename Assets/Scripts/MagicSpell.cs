@@ -9,7 +9,6 @@ public class MagicSpell : MonoBehaviour
     public RaycastHit hit;
     public bool isAttackDelay;
     private float attackDelay;
-    private float alpha;
     private int enemyLayer = 1 << 8;
     private int interactableLayer = 1 << 9;
     private int proIndex;
@@ -32,7 +31,6 @@ public class MagicSpell : MonoBehaviour
         isSwitchColor = false;
         magicUpgrade = false;
         attackDelay = 0.0f;
-        alpha = 0.0f;
         intensity = 0;
         proIndex = 0;
         r = 1; g = 1; b = 1;
@@ -153,11 +151,11 @@ public class MagicSpell : MonoBehaviour
 
             if (isAttackDelay)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0.4f, 0, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position - new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer)
-                    || Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out hit, 100, enemyLayer))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0.4f, 0, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0.4f, 0, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position - new Vector3(0, 0.4f, 0), transform.forward, out hit, 40, enemyLayer)
+                    || Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out hit, 40, enemyLayer))
                 {
                     if (hit.collider.tag == "Enemy")
                     {

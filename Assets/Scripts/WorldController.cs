@@ -69,7 +69,6 @@ public class WorldController : MonoBehaviour
     public GameObject winMenu;
     public GameObject winText;
     public GameObject winButton;
-    bool isWinText;
     float textAlpha;
 
     //Pause Menu
@@ -103,7 +102,6 @@ public class WorldController : MonoBehaviour
         isSceneComplete = false;
         isInPuzzle = false;
         puzzleUnlock = false;
-        isWinText = false;
         showQuest = false;
 
         isPlayDeathBGM = false;
@@ -134,6 +132,7 @@ public class WorldController : MonoBehaviour
                 {
                     exploreAreaClear = true;
                     uiCanvas.SetActive(false);
+                    AudioManager.playDoorOpenSound = true;
                     OpenDoor(exploreAreaDoor, exploreAreaCamera);
                 }
 
@@ -148,6 +147,7 @@ public class WorldController : MonoBehaviour
                     {
                         uiCanvas.SetActive(false);
                         puzzleAreaClear = true;
+                        AudioManager.playDoorOpenSound = true;
                         OpenDoor(puzzleAreaDoor, puzzleAreaCamera);
                     }
                 }

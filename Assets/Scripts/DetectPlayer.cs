@@ -46,7 +46,10 @@ public class DetectPlayer : MonoBehaviour
         }
         else
         {
-            agent.destination = patrolPoint[index].position;
+            if (patrolPoint.Length != 0)
+            {
+                agent.destination = patrolPoint[index].position;
+            }
         }
         if(!controller.isStun)
         {
