@@ -196,7 +196,7 @@ public class PuzzleDisplay : MonoBehaviour
 		// hide a puzzle tile (one is always missing to allow the puzzle movement).
 		TileDisplayArray[0,0].GetComponent<PuzzleTile>().Active = false;
 
-		for(int k = 0; k < 10; k++)
+		for(int k = 0; k < 15; k++)
 		{
 			// use random to position each puzzle section in the array delete the number once the space is filled.
 	
