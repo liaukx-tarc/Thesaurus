@@ -40,12 +40,21 @@ public class DetectPlayer : MonoBehaviour
     void Update()
     {
         //Debug.Log(isPlayerDetected);
+        if(isPlayerDetected)
+        {
+            agent.destination = PlayerController.position;
+        }
+        else
+        {
+            agent.destination = patrolPoint[index].position;
+        }
         if(!controller.isStun)
         {
             if (controller.isLastSpawn)
             {
                 chaseTime = 3600;
                 chaseTimer = chaseTime;
+                isPlayerDetected = true;
                 ChaseTarget();
             }
             else
@@ -145,6 +154,15 @@ public class DetectPlayer : MonoBehaviour
                     ChaseTarget();
                 }
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            isNear = false;
+            isPlayerDetected = false;
         }
     }
 

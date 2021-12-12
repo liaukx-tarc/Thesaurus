@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
                 {
                     stamina -= Time.deltaTime * 1.25f;
                 }
-                else if (stamina < 5 && !isRunning)
+                else if (stamina < 20 && !isRunning)
                 {
                     stamina += Time.deltaTime * 2.0f;
                 }

@@ -221,7 +221,7 @@ public class EnemyController : MonoBehaviour
             atkDelayTime = 0.5f;
         }
         yield return new WaitForSeconds(atkDelayTime);
-        if(!isStun && agent.remainingDistance < 2f)
+        if(!isStun && agent.remainingDistance < 2.5f)
         {
             if(!PlayerController.isDead)
             {
